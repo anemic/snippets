@@ -70,6 +70,19 @@ rails _2.1.0_ --version
 @somevar = somestring.gsub(/<\/?[^>]*>/, "")
 
 
+# open link in new window
+<%= link_to "External link", "http://foo.bar", :target => "_blank" %>
+
+
+# test field with default value that clears content when onfocus
+<%= text_field_tag :q, "enter keywords...", :onfocus => "this.value=''"  %>
+
+
+# You want an alphabetical sort, regardless of case.
+# Use Array#sort_by. This is both the fastest and the shortest solution.
+list.sort_by { |x| x.downcase } # => ["Albania", "anteater", "Zaire", "zorilla"]
+
+
 /*************************************** SQL *****************************************/
 
 # SQL update
