@@ -1,0 +1,12 @@
+
+/* Block style links that switch between black and white */
+a {
+  display: block;
+  color: #000;
+  background: #fff;
+}
+
+a:hover {
+  color: #fff;
+  background: #000;
+}
