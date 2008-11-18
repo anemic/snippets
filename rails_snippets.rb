@@ -66,6 +66,15 @@ raise ActiveRecord::RecordNotFound, "Page not found" if @page.nil?
 # add helper methods to that are avalible in the view to controler methods, such as link_to
 flash[:notice] = "Successfully created #{@template.link_to('product', @product)}."
 
+# the best flash message helper there is!
+Flash Message Conductor by Robby Russell
+http://github.com/planetargon/flash-message-conductor/tree/master
+# allows you to add flash messages by:
+add_error my_error
+add_notice my_notice
+add_message my_message
+# fliping sweet!
+
 /************************************** Views ***************************************/
 
 # use RedCloth for redering html
