@@ -93,15 +93,6 @@ add_message my_message
   <%= content_tag :div, msg, :id => key %>
 <% end %>
 
-
-
-
-
-
-
-
-
-
-
-
-
+# debug any var
+<%= debug @variable %>
+<%= debug params %>
