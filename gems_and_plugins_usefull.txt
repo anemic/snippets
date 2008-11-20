@@ -1,0 +1,23 @@
+# utility_scopes
+# http://github.com/yfactorial/utility_scopes/tree/master
+# adds to the o-so-cool named_scope
+# adds very useful named_scopes such as limit() ordered() etc
+# sudo gem install yfactorial-utility_scopes --source http://gems.github.com
+
+# roxy
+# http://github.com/yfactorial/roxy/tree/master
+# very cool proxy support for models see http://ryandaigle.com/articles/2008/11/10/implement-ruby-proxy-objects-with-roxy for examples
+# sudo gem install yfactorial-roxy --source http://gems.github.com
+
+# flash-message-conductor
+# cleans up flash messages for adding all types and displaying
+# http://github.com/planetargon/flash-message-conductor/tree/master
+# git://github.com/planetargon/flash-message-conductor.git
+
+# kropper
+# http://www.kolossus.com/category/kropper/
+# very usefull cropping utility simialr to iChat's avatar cropping
+# works out of the box with attachemnt_fu but easy modified to work from system call to convert with ImageMagick
+# plugin: http://rubyforge.org/scm/?group_id=3936
+
+

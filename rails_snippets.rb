@@ -96,3 +96,9 @@ add_message my_message
 # debug any var
 <%= debug @variable %>
 <%= debug params %>
+
+# access counter in partion for collection
+<%= render :partial => "some_collection", :collection => @some_collection %> 
+# in partial 
+# some_collection_counter will start at 1 (starts at 0 in rails < 2.0, I think, not sure) and increments by one for every time rendered
+<% some_collection_counter %>
