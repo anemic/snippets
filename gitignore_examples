@@ -9,6 +9,7 @@ log/*.log
 log/*.pid
 tmp/**/*
 config/database.yml
+config/initializers/site_keys.rb
 db/*.sqlite3
 db/schema.rb
 public/uploads/**/*
@@ -33,6 +34,9 @@ tmp/**/*
 
 # ignore for security reasons and for others preferred local db setup
 config/database.yml
+
+# ignore the keys generated for app and used for restfull authentication plugin
+config/initializers/site_keys.rb
 
 # ignore all local sqlite dbs
 db/*.sqlite3
