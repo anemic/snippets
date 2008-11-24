@@ -1,0 +1,53 @@
+# Global examples
+.DS_Store
+
+# Local examples
+# Of course, all of these are not necessary, but are just provided as examples of different situations where a .gitignore entry would come in handy
+# wish you could do conditions, does anyone know if you can use a shell script to run on each commit to generate this or some examples of conditional ignores?
+.DS_Store
+log/*.log
+log/*.pid
+tmp/**/*
+config/database.yml
+db/*.sqlite3
+db/schema.rb
+public/uploads/**/*
+vendor/plugins/query_analyzer*
+coverage/*
+Capfile
+
+
+# Local examples with explanations 
+
+# first and formost ignore all thoes pesky .DS_Store files that mac os x loves to generate in each dir
+.DS_Store
+
+# ignore all local generated log files
+log/*.log
+
+# ignore any processes that may be running
+log/*.pid
+
+# ignore tmp files
+tmp/**/*
+
+# ignore for security reasons and for others preferred local db setup
+config/database.yml
+
+# ignore all local sqlite dbs
+db/*.sqlite3
+
+# sometimes amy want to ignore schema if using different dbs in production, not that it is a great idea to do so but could happen, there are other reasons to ignore as well
+db/schema.rb
+
+# ignore uploaded files in development 
+public/uploads/**/*
+
+# ignore plug-ins generated files
+vendor/plugins/query_analyzer*
+
+# ignore rcov generated files
+coverage/*
+
+# ignore capistrano deploy 
+Capfile
