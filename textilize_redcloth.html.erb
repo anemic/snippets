@@ -1,6 +1,0 @@
-<!-- use RedCloth for redering html -->
-
-<%= textilize @page.content %>
-
-<!-- can use this insted of above if you are haveing problems with line breaks  -->
-<%= RedCloth.new(@page.content).to_html %>
