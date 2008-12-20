@@ -1,4 +1,0 @@
-# gems
-
-# plugins
-restful_authentication
