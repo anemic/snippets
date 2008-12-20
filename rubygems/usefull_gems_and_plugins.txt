@@ -6,7 +6,8 @@
 
 # roxy
 # http://github.com/yfactorial/roxy/tree/master
-# very cool proxy support for models see http://ryandaigle.com/articles/2008/11/10/implement-ruby-proxy-objects-with-roxy for examples
+# very cool proxy support for models see 
+# http://ryandaigle.com/articles/2008/11/10/implement-ruby-proxy-objects-with-roxy for examples
 # sudo gem install yfactorial-roxy --source http://gems.github.com
 
 # flash-message-conductor
@@ -20,4 +21,27 @@
 # works out of the box with attachemnt_fu but easy modified to work from system call to convert with ImageMagick
 # plugin: http://rubyforge.org/scm/?group_id=3936
 
+# restful_authentication
+# http://github.com/technoweenie/restful-authentication/tree/master
+# the standard user and session login 
+# plugin: git://github.com/technoweenie/restful-authentication.git
 
+# capistrano
+# http://www.capify.org/
+# the standard deployment script generator with custom deploy recipes
+# for restarting the server migrating new migrations, everything need to 
+# get your app up and running in staging or production
+# gem install capistrano
+# capify . (in root rails dir to get started)
+
+# paperclip
+# http://github.com/thoughtbot/paperclip/tree/master
+# the alternative to attachment_fu.  Advantage is that is it uses the same 
+# model to store files so unlike attachment_fu you don't need two models
+# such as users and users_files you can put the files directly in the users model
+# plugin: git://github.com/thoughtbot/paperclip.git
+
+# role_requirement
+# http://github.com/timcharper/role_requirement/tree/master
+# An easy way to add roles to users model for role based autherization
+# plugin: git://github.com/timcharper/role_requirement.git
