@@ -1,3 +1,7 @@
+# RSpec is now avalible as a gem and no plugin is nessasary 
+gem install rspec-rails
+ruby script/generate rspec # from your rails root directory and your done
+
 # Install RSpec plugin release >= 1.1.4 for Rails <= 2.1.0 
 
 cd vendor/plugins
