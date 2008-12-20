@@ -1,3 +1,5 @@
-# Mail.app
-	error: KERN_PROTECTION_FAILURE (in thread 12, think it was an unaccessible file??)
-	solution: rm ~\library\Preferences\com.apple.mail.plist	
+Mail.app
+	error: 
+		KERN_PROTECTION_FAILURE (in thread 12, think it was an unaccessible file??)
+	solution: 
+		rm ~\library\Preferences\com.apple.mail.plist	
