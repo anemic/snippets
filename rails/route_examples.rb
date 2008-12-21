@@ -46,6 +46,13 @@ end
 # /blogs/1/comments ==> blog_comments_path(1)
 # /comments/2       ==> comment_path(2)
 
+# creating index and root routes
+map.index :controller => "pages", :action => "main"
+map.root :index
+
+# sort of like a catch all
+map.connect '', :controller => "pages", :action => "main"
+
 
 
 
