@@ -4,6 +4,15 @@
 # adds very useful named_scopes such as limit() ordered() etc
 # sudo gem install yfactorial-utility_scopes --source http://gems.github.com
 
+# scope_builder
+# http://github.com/ryanb/scope-builder/tree/master
+# Build up named scopes conditionally.
+# config.gem 'ryanb-scope-builder', :lib => 'scope_builder', :source => 'http://gems.github.com'
+# sudo gem install ryanb-scope-builder
+# git clone git://github.com/ryanb/scope-builder.git
+# rake gems:install
+
+
 # roxy
 # http://github.com/yfactorial/roxy/tree/master
 # very cool proxy support for models see 
