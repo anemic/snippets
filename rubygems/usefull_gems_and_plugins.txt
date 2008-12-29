@@ -54,3 +54,8 @@
 # http://github.com/timcharper/role_requirement/tree/master
 # An easy way to add roles to users model for role based autherization
 # plugin: git://github.com/timcharper/role_requirement.git
+
+# nested_layouts
+# http://github.com/amatsuda/nested_layouts/tree/master
+# Plugin allows to specify outer layouts for particular layout thus creating nested layouts.
+# ruby script/plugin install git://github.com/amatsuda/nested_layouts.git
