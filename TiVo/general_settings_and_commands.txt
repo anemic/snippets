@@ -68,7 +68,8 @@ Commands:
 	ADVANCE
 	DELIMITER
 	GUIDE
-	
+
+Note: Ether cut and paste the commands or type really fast as the time out is quick (designed to be sent from app not command line)
 Examples:
 	# telnet into TiVo 
 	telnet 10.0.1.204 31339 
