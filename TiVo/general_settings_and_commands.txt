@@ -1,11 +1,13 @@
 TiVo 
 
+Most of this information was pulled from the TiVo message boards at http://www.tivocommunity.com/tivo-vb/showthread.php?t=392385
+
 Connecting to TiVo:
 	IP: 10.0.1.204
 	Port: 31339
 	Command: telnet 10.0.1.204 31339
 
-Note: it is best if you set up a static IP out of the range of your DHCP range, for me it was any ip above 10.0.1.200 so 204 was free for me.  To set this up on an airport, open airport utility and select manual configuration and select the internet tab from the top then DHCP tab and add 10.0.1.204 to the DHCP Reservations by MAC address (you can find your TiVo mac address by going to Messages & Settings -> Settings -> Phone & Network on your tivo and you will find on the top right MAC ID: XX:XX:XX:XX:XX:XX)
+Note: it is best if you set up a static IP out of the range of your DHCP range, for me it was any ip above 10.0.1.200 so 204 was free for me.  To set this up on an airport, open airport utility and select manual configuration and select the internet tab from the top then DHCP tab and add 10.0.1.204 to the DHCP Reservations by MAC address (you can find your TiVo mac address by going to Messages & Settings -> Settings -> Phone & Network on your TiVo and you will find on the top right MAC ID: XX:XX:XX:XX:XX:XX)
 
 If you do not assign a static ip you may find your TiVo's IP in this screen as well (Messages & Settings -> Settings -> Phone & Network)
 
