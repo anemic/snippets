@@ -1,2 +1,47 @@
-<!-- John Doe  -->
-<%= 'john_see_doeATexample._see_om'.gsub('_see_', 'c').gsub('AT', '@') %>
+<!-- all emails render to "john_doe@example.com"  -->
+
+<!-- yes this may be overkill but just an example of how gsub can be used -->
+<!-- fyi - this will work for scripts that download from source file but not if page is rendered then source is scanned -->
+<!-- probably better to put in js -->
+<%= 'jo_hsh_n_underscore_doeATexample._see_om'.gsub('_hsh_', 'h').gsub('_underscore_', '_').gsub('_see_', 'c').gsub('AT', '@') %>
+
+
+<script type='text/javascript'>
+<!--
+	var tg='<';
+	var name='john_doe';
+	var at='&#x040;';
+	var host1='exampl';
+	var host2='e.com';
+	var text='john_doe@example.com';
+	document.write(tg+'a hr'+'ef=mai'+'lto:'+name);
+	document.write(at+host1+host2+'>'+text+tg+'/a>');
+-->
+</script>
+
+
+<!-- unobtrusive js with span class, just an example can expand if you like -->
+<span class="emailCloak">john_doe(at)example.com</span>
+
+<script type='text/javascript'>
+	function emailCloak() {
+		if (document.getElementById) {
+			var alltags = document.all? document.all : document.getElementsByTagName("*");
+			for (i=0; i < alltags.length; i++) {
+			  if (alltags[i].className == "emailCloak") {
+				var oldText = alltags[i].firstChild;
+				var emailAddress = alltags[i].firstChild.nodeValue;
+				var user = emailAddress.substring(0, emailAddress.indexOf("("));
+				var website = emailAddress.substring(emailAddress.indexOf(")")+1, emailAddress.length);
+				var newText = user+"@"+website;
+				var a = document.createElement("a");
+				a.href = "mailto:"+newText;
+				var address = document.createTextNode(newText);
+				a.appendChild(address);
+				alltags[i].replaceChild(a,oldText);
+			  }
+			}
+		}
+	}
+	window.onload = emailCloak;
+</script>
