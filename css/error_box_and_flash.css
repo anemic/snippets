@@ -79,3 +79,62 @@
   font-size: 12px;
   list-style: disc;
 }
+
+
+/*-----------------------------------------------------------------------------------------------
+  Basic Messages (used with flash-message-conductor)
+-----------------------------------------------------------------------------------------------*/
+ 
+#flash_messages {
+  padding: 8px;
+  margin-bottom: 12px;
+}
+
+#flash_messages p {
+  padding: 1px 5px;
+  color: #fff;
+  margin-bottom: 0;
+}
+
+#flash_messages p.error {
+  background: #db000a;
+}
+ 
+#flash_messages p.error a {
+  color: #fff;
+  text-decoration: underline;
+}
+ 
+#flash_messages p.error a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+#flash_messages p.notice {
+  background: #219d00;
+}
+
+#flash_messages p.message {
+  background: #444;
+}
+
+
+
+/*-----------------------------------------------------------------------------------------------
+  Nifty Flash Messages
+-----------------------------------------------------------------------------------------------*/
+
+#flash_notice, #flash_error {
+  padding: 5px 8px;
+  margin: 10px 0;
+}
+
+#flash_notice {
+  background-color: #CFC;
+  border: solid 1px #6C6;
+}
+
+#flash_error {
+  background-color: #FCC;
+  border: solid 1px #C66;
+}

@@ -1,0 +1,35 @@
+
+/*-----------------------------------------------------------------------------------------------
+  Very Basic and Clean Flash and Error Messages (pulled from jquery and ajax example
+	sorry but I lost the url of the original coreator, just found this 
+	lying around in some examples I downloaded a while back, so if you
+	are the owner or know the owner of this code please commment or send an email)
+-----------------------------------------------------------------------------------------------*/
+
+.flash {
+  clear: both;
+  padding: 5px 5px 5px 20px;
+  margin-bottom: 20px;
+  border-top:1px solid #ccc;
+  border-bottom:1px solid #ccc;
+  display:none;
+}
+
+#flash_success{
+  color: #588e03;
+  background: #e9fad9;
+  border-color: #588e03; 
+}
+
+.fieldWithErrors input,
+.fieldWithErrors textarea{
+  color: #c30000;
+  background: #f2dcdc;
+  border-color: #c30000;
+}
+
+#errorExplanation{
+  margin:1em 0;
+  padding:.7em;
+  background:pink;
+}

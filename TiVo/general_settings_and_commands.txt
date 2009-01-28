@@ -1,0 +1,83 @@
+TiVo 
+
+Most of this information was pulled from the TiVo message boards at http://www.tivocommunity.com/tivo-vb/showthread.php?t=392385
+
+Connecting to TiVo:
+	IP: 10.0.1.204
+	Port: 31339
+	Command: telnet 10.0.1.204 31339
+
+Note: it is best if you set up a static IP out of the range of your DHCP range, for me it was any ip above 10.0.1.200 so 204 was free for me.  To set this up on an airport, open airport utility and select manual configuration and select the internet tab from the top then DHCP tab and add 10.0.1.204 to the DHCP Reservations by MAC address (you can find your TiVo mac address by going to Messages & Settings -> Settings -> Phone & Network on your TiVo and you will find on the top right MAC ID: XX:XX:XX:XX:XX:XX)
+
+If you do not assign a static ip you may find your TiVo's IP in this screen as well (Messages & Settings -> Settings -> Phone & Network)
+
+Note: I am using 10.0.1.204 for my setup but yours will most likely be different.  You must substitute your own TiVo IP where ever you see 10.0.1.204.
+
+If you telnet into your TiVo on port 31339, you will be presented with the following:
+
+Code:
+	CH_STATUS <CHANNEL> <STATUS>
+		
+Once the telnet session is started, the following commands are available:
+
+KEYBOARD - The current purpose and syntax of this command is unknown.
+
+TELEPORT <PLACE>- I'm not sure why this command exists, because I believe anything that TELEPORT does can also be accomplished via IRCODE. That said, the four currently known places you can "teleport" to are TIVO, LIVETV, GUIDE, and NOWPLAYING.
+
+SETCH <CHANNEL> - This command will change the channel on the current tuner being watched to the channel number defined. If the current tuner is recording a program, it will change the other tuner. If both tuners are recording, the channel will not change and the TiVo will respond with "CH_FAILED RECORDING "Show Title". Using this command when a recording is being played back will result in "CH_FAILED NO_LIVE".
+
+FORCECH <CHANNEL> - This command will force the current tuner to the tune the desired channel regardless of what it's doing. If a recording is being recorded it will cancel the recording and change the channel without confirmation.
+
+IRCODE <COMMAND> - IRCODE seems to mimic the old "sendkey" command in almost every way. While it can't handle multiple commands on one line, almost all of the commands listed in sendkey.tcl are valid and working.
+	
+Commands:
+	UP
+	DOWN
+	LEFT
+	RIGHT
+	SELECT
+	TIVO
+	LIVETV
+	THUMBSUP
+	THUMBSDOWN
+	CHANNELUP
+	CHANNELDOWN
+	RECORD
+	DISPLAY
+	DIRECTV
+	NUM0
+	NUM1
+	NUM2
+	NUM3
+	NUM4
+	NUM5
+	NUM6
+	NUM7
+	NUM8
+	NUM9
+	ENTER
+	CLEAR
+	PLAY
+	PAUSE
+	SLOW
+	FORWARD
+	REVERSE
+	STANDBY
+	NOWSHOWING
+	REPLAY
+	ADVANCE
+	DELIMITER
+	GUIDE
+
+Note: Ether cut and paste the commands or type really fast as the time out is quick (designed to be sent from app not command line)
+Examples:
+	# telnet into TiVo 
+	telnet 10.0.1.204 31339 
+	
+	# some simple commands	
+	IRCODE UP
+	IRCODE DOWN
+	IRCODE SELECT
+	IRCODE DISPLAY
+	IRCODE TIVO
+	IRCODE NOWSHOWING
