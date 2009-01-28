@@ -9,4 +9,4 @@
   sudo gem install mysql -- --with-mysql-dir=/usr/local/mysql
 
 # postgres
-sudo gem install postgres -- --with-pgsql-dir=/Library/PostgresPlus/8.3
+sudo gem install postgres -- --with-pgsql-dir=/Library/PostgresPlus/8.3/
