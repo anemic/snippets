@@ -1,0 +1,8 @@
+irc.freenode.net 
+irc.efnet.net
+irc.us.ircnet.net
+us.undernet.org
+irc.quakenet.org
+irc.mozilla.org
+
+port: 6667
