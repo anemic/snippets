@@ -1,0 +1,15 @@
+Hotkeys:
+  Tab	                Complete nickname.
+  Ctrl+Tab
+  Opt+Space	          Move to the next unread channel.
+  Ctrl+Shift+Tab
+  Opt+Shift+Space	    Move to the previous unread channel.
+  Opt+Tab	            Move back to the previously selected channel.
+  Cmd+Up/Down
+  Cmd+Opt+Up/Down	    Move to the previous/next active channel.
+  Ctrl+Up/Down	      Move to the previous/next channel.
+  Cmd+Opt+Left/Right	Move to the previous/next active server.
+  Ctrl+Left/Right	    Move to the previous/next server.
+  Cmd+0..9	          Move to the 1st .. 10th channel in the current server.
+  Cmd+Ctrl+1..0	      Move to the 1st .. 10th server.
+  Ctrl+Enter	        Send a notice message.

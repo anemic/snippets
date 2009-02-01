@@ -1,0 +1,104 @@
+
+/* ::. TYPOGRAPHY .:: */
+
+body {
+	font-family: "Trebuchet MS","Lucida Grande",Verdana,Arial,sans-serif;
+	font-size: 14px;
+	
+	color: #000;
+}
+p {
+	margin-bottom: 0.7em;
+}
+pre {
+	background-color: #ddd;
+	border: 1px solid #000;
+	font-family: 'Courier New', 'Terminal', monospace;
+	color: #000;
+	padding: 3px 5px;
+	overflow: auto;
+	margin: 12px 0;
+}
+/* END blocks */
+
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+	margin-bottom: 10px;
+	padding-bottom: 2px;
+	font-weight: bold;
+	color: #000;
+}
+h1 {
+	font-size: 28px;
+}
+h2 {
+	font-size: 20px;
+}
+h3 {
+	font-size: 18px;
+}
+h4 {
+	font-size: 16px;
+}
+h5 {
+	font-size: 15px;
+}
+h6 {
+	font-size: 14px;
+}
+
+
+/* Lists */
+ul {
+	margin: 0 0 0.7em 1em;
+}
+	ul li {
+		margin-left: 30px;
+	}
+ol {
+	margin: 0 0 0.7em 1em;
+	list-style: outside decimal;
+}
+	ol li {
+		margin-left: 30px;
+	}
+dl {
+	margin-bottom: 0.7em;
+}
+	dl dt {
+		font-weight: bold;
+	}
+	dl dd {
+		margin-bottom: 0.2em;
+		margin-left: 30px;
+	}
+/* END lists */
+
+
+/* Links */
+a,
+a:link,
+a:active {
+	color: #000;
+	text-decoration: none;
+}
+a:visited {
+	/* color: #184a84; */
+}
+a:hover {
+	
+}
+/* END links */
+
+
+/* Misc */
+hr {
+	display: none;
+}
+div.hr {
+	margin: 1em auto;
+	height: 1px;
+	background-color: #999;
+	line-height: 1px;
+}

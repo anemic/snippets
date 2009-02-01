@@ -1,0 +1,65 @@
+/*---------------------------------------------------------------------------
+Resets browsers' default styles, smoothing out inconsistencies across 
+browsers.
+ 
+Tables are rendered as if the attributes cellpadding="0" and cellspacing="0" 
+are applied. If cellspacing is required, use:
+ 
+  border-collapse: separate;
+  border-spacing: 1px;
+ 
+IE6 and IE7 do not support the border-spacing property, but the following 
+hack can be applied:
+ 
+  behavior: expression((this.runtimeStyle.behavior="none") && (this.cellSpacing=1));
+ 
+Adapted from: http://meyerweb.com/eric/tools/css/reset/
+ 
+Copyright (c) 2008 Jason Cheow, under the MIT license
+---------------------------------------------------------------------------*/
+ 
+html, body, a, abbr, acronym, address, applet, big, blockquote, caption, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, iframe, img, ins, kbd, label, legend, li, object, ol, p, pre, q, s, samp, small, span, strike, strong, sub, sup, table, tbody, td, tfoot, th, thead, tr, tt, ul, var {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+ 
+body {
+  font-size: 10px;
+  *font-size: 62.5%;
+  font-family: sans-serif;
+  line-height: 1;
+  color: black;
+  background-color: white;
+}
+ 
+ol, ul {
+  list-style: none;
+}
+ 
+blockquote, q {
+  quotes: none;
+}
+ 
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none;
+}
+ 
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+ 
+input, select, textarea, button {
+  font-size: 10px;
+  font-family: sans-serif;
+}
+ 
+textarea {
+  margin: 0;
+}

@@ -1,0 +1,10 @@
+# the largest I know of
+# great serv has lots of friendly and knowledgeable users
+irc.freenode.net 
+
+# small, mostly in czech the night I visited but asked about english as the "us" in the domain threw me and they kindly said
+# just ask away and most know english and got the impression it was not frowned upon to chat in english 
+irc.us.ircnet.net
+
+# small, quite when I visited but a few users where in
+irc.efnet.net

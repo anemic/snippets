@@ -1,0 +1,82 @@
+
+/**
+ * Tools:
+ *   - easy clearing method
+ *   - replace (useful for screen readers)
+ *   - accessibility (useful for screen readers)
+ *
+ * @package    themes
+ * @subpackage default2
+ */
+
+/* clearing */
+.stretch,
+.clear {
+    clear: both;
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    line-height: 1px;
+}
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.clearfix { /* make method ie7 compatible */
+    #display: inline-block;
+}
+* html .clearfix {
+    /* Hides from IE-mac \*/
+	height: 1%;
+	display: block; /* restore block display for ie6 */
+	/* End hide from IE-mac */
+}
+/* end clearing */
+
+
+/* replace */
+.replace {
+    display: block;
+
+	background-repeat: no-repeat;
+	background-position: left top;
+	background-color: transparent;
+}
+/* tidy these up */
+.replace * {
+    text-indent: -10000px;
+    display: block;
+
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-color: transparent;
+}
+    .replace a {
+		text-indent: 0;
+	}
+        .replace a span {
+            text-indent: -10000px;
+        }
+/* end replace */
+
+
+/* accessibility */
+span.accesskey {
+    text-decoration: none;
+}
+.accessibility {
+    position: absolute;
+    top: -9999em;
+    left: -9999em;
+}
+/* end accessibility */
+
+
+/* hide */
+.hide {
+    display: none;
+}
