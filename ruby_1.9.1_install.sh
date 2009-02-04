@@ -6,6 +6,11 @@ cd ruby-1.9.1-preview1
 make
 sudo make install
 
+# test it out
+/usr/local/ruby-1.9.1/bin/ruby -e 'p "hello"' -v
+  >ruby 1.9.1p0 (2009-01-30 revision 21907) [i386-darwin9.6.0]
+  >"hello"
+
 # add following to ~/.bash_login or ~/.profile (what ever you use to set your env) 
 # make sure to put at top so gets loaded before your default installation of ruby 
 export PATH=/usr/local/ruby-1.9.1/bin:/Users/<user_name>/.gem/ruby/1.9.1/bin:$PATH
