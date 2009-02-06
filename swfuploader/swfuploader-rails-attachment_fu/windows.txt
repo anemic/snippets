@@ -1,0 +1,39 @@
+From: Luu Tran
+Date: January 19, 2008 11:49:01 AM MST
+To: Dave South
+Subject: swfupload and attachment_fu on windows
+
+Thanks for your page on swfupload.  I found a problem with attachment_fu on windows which you may want to alert your readers to.  It has to do with temp file's size being incorrectly reported.  On my machine, this bug results in images of certain sizes causing an exception. Discussion here
+
+http://www.nabble.com/attachment_fu-on-Windows--td9284345.html
+
+main thing that has to be done is to edit attachment_fu.rb
+
+    def uploaded_data=(file_data)
+       return nil if file_data.nil? || file_data.size == 0
+       self.content_type = file_data.content_type
+       self.filename     = file_data.original_filename if respond_to? (:filename)
+       if file_data.is_a?(StringIO)
+         file_data.rewind
+         self.temp_data = file_data.read
+       else
+         self.temp_data = file_data.read
+         #self.temp_path    = file_data.path
+       end
+     end
+
+that is, replace
+
+     self.temp_path    = file_data.path
+
+with
+
+      self.temp_data = file_data.read
+
+I hope that helps someone.
+
+also, could you suggest how to make it possible for the user to preview the uploads, then they ca submit if they want, or pick some other pictures, or do nothing and cancel.  as it is, the upload and adding to the DB happens right away.
+
+thanks
+
+luu

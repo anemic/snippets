@@ -1,0 +1,9 @@
+<h1>Listing photos</h1>
+<% @photos.each do |photo| %>
+  <p>
+    <%= link_to image_tag(photo.public_filename(:thumb)), photo_path(photo) %>
+    <%= link_to 'Delete', photo, :confirm => 'Are you sure?', :method => :delete %>
+  </p>
+<% end %>
+
+<%= link_to 'New photo', new_photo_path %>
