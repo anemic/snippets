@@ -12,16 +12,17 @@ cd ..
 sudo cp -r jruby* /usr/local/jruby
 
 # add jruby bin to path (in ~/.profile or ~/.bash_login)
+export JRUBY_HOME=/usr/local/jruby
 export PATH=/usr/local/jruby/bin:$PATH
+
+# kept getting a warning to install so installed full openssl support
+sudo jruby -S gem install jruby-openssl
 
 # install rails
 sudo jruby -S gem install rails
 
 # install rake
 sudo jruby -S gem install rake
-
-# kept getting a warning to install so installed openssl
-sudo jruby -S gem install jruby-openssl
 
 # install mysql support
 sudo jruby -S gem install activerecord-jdbc-adapter  activerecord-jdbcmysql-adapter
@@ -43,3 +44,10 @@ jruby script/generate migration CreateWidgetsTable
 
 # run migration 
 jruby -S rake db:migrate
+
+
+# installing glassfish
+sudo jruby -S gem install glassfish
+
+# fire up the server
+sudo jruby -S glassfish_rails testapp
