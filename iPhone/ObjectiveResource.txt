@@ -1,0 +1,5 @@
+# Get source
+git clone git://github.com/yfactorial/objectiveresource.git objectiveresource
+
+# pull in submodules 
+git submodule update -i
