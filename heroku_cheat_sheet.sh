@@ -25,3 +25,10 @@ git push
 # config/database.yml will be ignored so edit for local
 # production uses postgresql but migrations and all is handled by heroku
 
+
+# resets db and rollback all migrations (there is no way to drop the db, can only rollback migrations)
+# open up rake in edit mode
+db:migrate VERSION=0
+db:migrate
+# rerun seed data or upload yml
+db:seed
