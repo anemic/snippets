@@ -1,3 +1,6 @@
+# install rails 2.3
+sudo gem install rails --source http://gems.rubyonrails.org
+
 # gems and rails 2.x configurations
 
 # in enviornment.rb or for specific environments 
