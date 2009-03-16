@@ -1,4 +1,4 @@
-Rails Reserved Words
+Rails Reserved Words (see http://cheat.errtheblog.com/s/rails_reserved_words/)
 
 ADDITIONAL_LOAD_PATHS
 ARGF
