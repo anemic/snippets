@@ -1,0 +1,68 @@
+# this combines all style sheets into one file for one request and caches it 
+<%= stylesheet_link_tag :all, :cache => true %>
+# or can specify the name of file they all should be combined into
+<%= stylesheet_link_tag "screen", "screen2", :cache => "djmusic" %>
+
+# this combines all js  into one file for one request and caches it 
+<%= javascript_include_tag :all, :cache => true %>
+# or can specify the name of file they all should be combined into
+<%= javascript_include_tag :defaults, :cache => "main" %>
+
+
+asset_packager plugin (http://synthesis.sbecker.net/pages/asset_packager) - combines assets as well as minifys them 
+
+google AJAX libs - loads from google ex prototype.js so if user comes from a site using this and already has it loaded they do not need to load it again.  
+
+Content Delivery Systems - see amazon cloudfront (S3 storage)
+ActionController::Base.asset_host = "assets.example.com"
+<%= image_tag("rails.png") %> -> prepends asset server -> assets.example.com/images/rails.png
+
+
+Cache assets on client with expires 
+# apache
+<ifmodule mod_expires.c>
+	<filematch "\.(jpg|gif|png|css|js)$">
+		ExpiresActive on
+		ExpiresDefualt "access plus 1 year"
+	</filematch>
+<ifmodule>
+
+# cacheing pages
+# in controller on top this will cache index and show
+caches_page :index, :show
+# to expire cache
+# in update can put
+expire_page :action => :index
+expire_page :action => :show, :id => @something
+
+# sweepers
+# declare sweepers path in envornment.rb
+config.load_paths += %W( #{RAILS_ROOT}/app/sweepers )
+# post_sweeper.rb
+class PostSweeper < ActionController::Caching::Sweeper
+	observe Post
+	
+	def after_save(post)
+		clear_posts_cache(post)
+	end
+	
+	def after_destroy(post)
+		clear_posts_cache(post)
+	end
+	
+	def clear_posts_cache(post)
+		expire_page :controller => :posts, :action => index
+		expire_page :controller => :posts, :action => show, :id => post
+	end
+end
+# tell controllers to use sweeper
+# in controller
+cache_sweeper :post_sweeper, :only => [:create, :update, :destroy]
+
+
+
+
+
+
+
+

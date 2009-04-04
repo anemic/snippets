@@ -29,3 +29,9 @@ rake gems:unpack GEM=hpricot
 
 # builds all gems in vender/gems
 rake gems:build
+
+# from joyent tips to look in vender gems, pre rails 2.x
+# Unpacked your gems to vender/gems (gem unpack gemname), add the following to your config/environment.rb file to pull all of the newly added gems into your load_path
+config.load_paths += Dir["#{RAILS_ROOT}/vendor/gems/**"].map do |dir| 
+  File.directory?(lib = "#{dir}/lib") ? lib : dir
+end
