@@ -1,0 +1,27 @@
+The Apple Hardware Test (AHT) is now built into the ROM (just like the latest iMac). Hold down the 'D' key at boot time and it boots into AHT.
+The previous version had AHT on the system install DVD. If you wanted to run AHT, you needed the disc. Now you don't.
+
+On startup (press and hold key on start up)
+	'd' - Apple Hardware Test (AHT)
+	'option' - able to select the boot drive
+	'option-command-p-r' - Reset NVRAM (you will hear two beeps before you release the keys)
+	'n' - Attempt to start up from a compatible network server (NetBoot)
+	't' - Start up in FireWire Target Disk mode.
+	'shift' - Start up in Safe Boot mode and temporarily disable login items.
+	'v' - Start up in Verbose mode.
+	's' - Start up in Single-User mode.
+
+Mail.app
+	error: 
+		KERN_PROTECTION_FAILURE (in thread 12, think it was an unaccessible file??)
+	solution: 
+    m ~/Library/Preferences/com.apple.mail.plist
+    
+    
+# Sync Data
+# was having issues with Transmit not being shown in the the sync panel
+# the fix, type or cut and paste bellow in terminal 
+~/Library/Application\ Support/Transmit/TransmitSync.app/Contents/MacOS/TransmitSync --unregisterClient
+~/Library/Application\ Support/Transmit/TransmitSync.app/Contents/MacOS/TransmitSync --registerClient
+# load up sync pane in sys prefs and poof everything is all good
+
