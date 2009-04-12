@@ -1,0 +1,22 @@
+# Getting Time Machine to work on an Unsupported NAS
+
+# Set Time Machine to use unsupported drives. 
+# execute the following command in terminal (NOTE: you must logout and log back in for this to take affect)
+defaults write com.apple.systempreferences TMShowUnsupportedNetworkVolumes 1
+
+# create sparsebundle file
+hdiutil create -library GPTSPUD -size 400g -fs HFS+J -type SPARSEBUNDLE -volname "Backup of <YOURCOMPUTERNAME>" <YOURCOMPUTERNAME>_<EN0MACADDRESS>.sparsebundle
+# IMPORTANT: *******GPTSPUD is for intel based macs, for ppc replace with SPUD********, change -size value based on what you would like for your max size, replace <YOURCOMPUTERNAME> with your computer name found in System Preferences -> Sharing, replace <EN0MACADDRESS> with the MAC Address of en0 found in Preferences -> Networking select Ethernet to the left and click on advanced to find this number, write this down and remove all :   Don't worry it will still work wirelessly over ABS, just need the en0 mac address
+
+# Example with intel based mac -> GPTSPUD, max size => 400gb, computer name -> MyCompuer en0 MAC Address -> 00:15:bb:00:5a:b9
+hdiutil create -library GPTSPUD -size 400g -fs HFS+J -type SPARSEBUNDLE -volname "Backup of MyCompuer" MyCompuer_0015bb005ab9.sparsebundle
+
+# create a user on your NAS,I used tmbackup, set up a shared folder, named mine TMBackup, set permissions, on folder, I set +rw for user tmbackup only, and my drive is elysium
+# Example connect to volume
+cifs://tmbackup@elysium.local/TMBackup
+# copy created sparsebundle to connected drive
+# select volume in Time Machine preferences and there you go
+
+# PS I cheated and set the shared folder to all access but will start removing permissions till it breaks but was assured that the setup above will work.
+
+# Good Luck and hope all goes well, and may I say, I love my new Western Digital World I 1TB NAS Network Drive, very hackable (has a hacker community), looks neat, and realty... looks is what it is all about ;).... but seriously they even allow you to download the linux source used in the dive... kudos to WD.
