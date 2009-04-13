@@ -1,6 +1,6 @@
 # updateing paths for that session only
-PATH=/opt/bin:$PATH
-export /opt/bin:$PATH
+export PATH=/opt/bin:$PATH
+env PATH=/opt/bin:$PATH
 # to update on permanently add to .login, .bashrc, .profile, or .bash_login
 
 # basic insall from source

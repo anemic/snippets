@@ -1,0 +1,39 @@
+# Installing third party packages on a Western Digital WDH1NC10000N 1TB My Book World Edition Network Hard Drive
+# obtained from http://mybookworld.wikidot.com/optware
+
+# enable ssh
+# login to the web interface by going to http://<your_drive_ip> then click on the Advanced Mode on the top right, select Advanced, and check the SSH Access box to turn on ssh
+# ssh to box
+ssh root@<your_drive_ip> 
+# default password was 'welc0me' for me but yours may differ, check manual
+
+# install optware from cs05q1armel feed
+feed=http://ipkg.nslu2-linux.org/feeds/optware/cs05q1armel/cross/unstable
+ipk_name=$(wget -qO- $feed/Packages | awk '/^Filename: ipkg-opt/ {print $2}')
+wget $feed/$ipk_name
+tar -xOvzf $ipk_name ./data.tar.gz | tar -C / -xzvf -
+mkdir -p /opt/etc/ipkg
+echo "src armel http://ipkg.nslu2-linux.org/feeds/optware/cs05q1armel/cross/unstable" > /opt/etc/ipkg/armel-feed.conf
+
+# updates packages 
+/opt/bin/ipkg update
+
+# lists available packages 
+/opt/bin/ipkg list
+
+# install or upgrade packages
+/opt/bin/ipkg install <foo> <bar>
+
+# remove packages
+/opt/bin/ipkg remove <foo> <bar>
+
+# add /opt/bin to PATH  after setting for this session you can add this to the end of /root/.bashrc or /root/bash_profile or to any users bash login script to avoid doing this on every login
+export PATH=$PATH:/opt/bin
+
+# Due to uclibc configuration peculiarities, you may need to run ldconfig after package installation, if it complains that it can't find shared libraries.
+# May also need to set LD_LIBRARY_PATH sometimes? Install worked without but have seen notes that some packages may require this 
+export LD_LIBRARY_PATH=/opt/lib
+
+
+
+

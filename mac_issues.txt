@@ -15,7 +15,7 @@ Mail.app
 	error: 
 		KERN_PROTECTION_FAILURE (in thread 12, think it was an unaccessible file??)
 	solution: 
-    m ~/Library/Preferences/com.apple.mail.plist
+    rm ~/Library/Preferences/com.apple.mail.plist
     
     
 # Sync Data
