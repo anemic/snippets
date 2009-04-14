@@ -27,8 +27,9 @@ echo "src armel http://ipkg.nslu2-linux.org/feeds/optware/cs05q1armel/cross/unst
 # remove packages
 /opt/bin/ipkg remove <foo> <bar>
 
-# add /opt/bin to PATH  after setting for this session you can add this to the end of /root/.bashrc or /root/bash_profile or to any users bash login script to avoid doing this on every login
+# add /opt/bin to PATH
 export PATH=$PATH:/opt/bin
+# to set on login add this to the end of /root/.bashrc and /etc/profile for root user or to any users bash login script to avoid doing this on every login
 
 # Due to uclibc configuration peculiarities, you may need to run ldconfig after package installation, if it complains that it can't find shared libraries.
 # May also need to set LD_LIBRARY_PATH sometimes? Install worked without but have seen notes that some packages may require this 
