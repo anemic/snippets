@@ -57,6 +57,9 @@ list.sort_by { |x| x.downcase } # => ["Albania", "anteater", "Zaire", "zorilla"]
 # use helpers in a model
 "This category has #{ActionController::Base.helpers.pluralize(products.count, 'product')}."
 
+# validates urls
+validates_format_of :url, :with => /^(https?://)?([^/]+)(/.+)?$/i
+
 /************************************ Controllers ***********************************/
 
 # instead of saying return 404error you can use
