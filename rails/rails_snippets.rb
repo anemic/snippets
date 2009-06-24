@@ -15,7 +15,8 @@ git checkout v2.1.0_RC1
 rake rails:update
 
 # Choose which version of rails to use
-rails _2.1.0_ --version
+gem install -v=1.2.3 rails
+# deprecated  'rails _2.1.0_ --version' 
 
 # install all gems spesified in Rails::Initializer
 rake gems:install
