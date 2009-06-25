@@ -1,0 +1,10 @@
+# install wirble
+sudo gem install -y wirble
+
+# create or edit a file called .irbrc in your home folder (~/.irbrc), and make sure these lines are included there:
+require 'rubygems'
+require 'wirble'
+Wirble.init
+Wirble.colorize
+
+# save and exit and tab away with color
