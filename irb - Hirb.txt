@@ -1,0 +1,8 @@
+http://github.com/cldwalker/hirb/tree/master
+
+bash> script/console
+ Loading local environment (Rails 2.2.2)
+ irb>> require 'hirb'
+ => true
+ irb>> Hirb.enable
+ => nil

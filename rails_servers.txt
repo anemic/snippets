@@ -1,0 +1,27 @@
+# http://www.nginx.org/
+# nginx 
+# installed from macports
+###########################################################
+# A startup item has been generated that will aid in
+# starting nginx with launchd. It is disabled
+# by default. Execute the following command to start it,
+# and to cause it to launch at startup:
+#
+# sudo launchctl load -w /Library/LaunchDaemons/org.macports.nginx.plist
+###########################################################
+
+
+# http://code.macournoyer.com/thin/
+# thin
+sudo gem install thin
+# Go to your Rails app directory and run:
+thin start
+
+# http://haproxy.1wt.eu/
+HAProxy
+
+# http://www.modrails.com/
+Phusion Passenger
+
+# http://mongrel.rubyforge.org/
+# Mongrel
