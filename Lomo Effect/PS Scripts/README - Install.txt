@@ -1,3 +1,5 @@
+From http://www.flickr.com/groups/technique/discuss/34317/
+
 Put the script in the following location in your Photoshop directory: [PS Directory]/Presets/Scripts
 (~/Library/Application Support/Adobe/Adobe Photoshop CS4/Presets/Scripts)
 

@@ -1,3 +1,5 @@
+From http://crunchbang.org/archives/2007/11/29/gimp-lomo-filter/
+
 Get the filter
 
 The GIMP filter that I used on the above images was originally written by Francois Le Lay. It has since been updated by Donncha O Caoimh to work with GIMP 2.4 [installed by default on Ubuntu 7.10.] The script is released under GPL.
