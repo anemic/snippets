@@ -1,0 +1,2 @@
+Was having issues using seed-fu as a gem and requiring in the dependencies but found that this would work
+config.gem 'mbleigh-seed-fu', :lib => 'seed_fu', :source => 'http://gems.github.com/'
