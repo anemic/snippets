@@ -1,0 +1,8 @@
+Batter Refresh Bata (http://www.androlib.com/android.application.com-trapp-batterypro-qxFw.aspx)
+Just to be clear this is NOT for constant battery DEEP-CYCLE discharges. Its meant to be used if you need to reset the batteries “fuel gauge”. To fix it discharge with Battery Refresh, charge back to 100% and run the following root commands: 
+	su
+	rm /data/system/batterystats.bin
+
+Battery Refresh Beta was developed for Android by Thomas Riley
+
+Package name : com.trapp.batterypro
