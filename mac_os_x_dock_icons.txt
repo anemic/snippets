@@ -1,0 +1,9 @@
+# To turn on and off visibility of Application Icons in the dock.
+
+In order to get rid of the dock icon, you must modify the file named 'Info.plist' inside the Application's package (i.e. Sherlock.app/Contents/Info.plist). Open this file in your favorite text editor and add the following section (if it's already present simply change the 0 to a 1 in the string tag:
+
+<key>NSUIElement</key>
+<string>1</string>
+
+With the System Prefs you will have to write-enable the 'Info.plist' file by changing the permissions in a Terminal window:
+sudo chmod 464 /Applications/System Preferences.app/Contents/Info.plist

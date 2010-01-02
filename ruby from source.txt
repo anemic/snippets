@@ -1,0 +1,1 @@
+If you decided to built Ruby by yourself and not using the version Apple provides, make sure you compiled it as a shared library, passing the --enabled-shared option to the configure script. By default this option is not activated.
