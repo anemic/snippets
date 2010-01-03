@@ -1,0 +1,23 @@
+Sapiens ($19.95)
+Smart launcher which learns which programs you use most. You’ll get used to the mnemonic way it displays programs on its circular interface for fast launching.
+
+ExpressLauncher ($15.00)
+In this one I really enjoy the interface, however to be honest it’s essentially a preferences pane item that associates keys with apps.
+
+Docktop ($6.00)
+This one is like a new and improved Dock that you can customize at will. It can be cloned and moved anywhere on your screen so you have different docks for different needs.
+
+Snard ($10.00)
+Nostalgic of the good old file explorer view? Snard makes it available straight from your menu bar, so any app is only a few mouse movements away.
+
+Quicksilver (free)
+Before Spotlight turned up, Quicksilver was the most cherished app of Mac geeks the world around. A powerful and fast multi-app launcher with keystroke support.
+
+Valet ($25.00)
+Like Bruce Wayne, imagine you had Alfred around to remember everything you needed and launched on your Mac. This is what Valet will do for you (it won’t get you a Batmobile though)
+
+Todos (free)
+This app is the ancestor of Leopard’s grid view. Type a hotkey and Todos will bring up a full grid of all your applications for you.
+
+Namely (free)
+Like Spotlight but want to limit it to apps? You can configure it from the preferences. Or you can install Namely. Less hassle.
