@@ -1,0 +1,14 @@
+Taken From http://henrik.nyh.se/2007/10/open-in-textmate-from-leopard-finder
+
+By request, I did an "Open In TextMate" Finder toolbar icon for Leopard.
+
+I also took the opportunity to write a new script, based on Simon Dorfman's. Clicking the toolbar icon now opens the selected file or files if there is a selection; otherwise it opens the current directory. You can also drag-and-drop files to the icon to open those.
+
+Behind the scenes, the script is all AppleScript, without dropping into the shell. Feels a bit more robust.
+
+A single TextMate window will open, containing all selected or dropped items in a project.
+
+I put my icon inside the bundle, so it should appear with no extra effort. I also toggled a flag in the bundle so you don't see the script appear and disappear in the dock when triggered.
+
+Download OpenInTextMate.zip, extract the file somewhere (I keep it in /Applications/Scripts), then drag it onto the Finder toolbar. You'll need to wiggle it a bit for the toolbar to catch on.
+
