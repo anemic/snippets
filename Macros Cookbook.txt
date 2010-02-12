@@ -1,0 +1,849 @@
+Full Credit Given to Maraco
+	Found this one night and love all the one liners in here VERY useful, just one of those, when you need it.. its here
+	
+	
+Marco's Cookbook 
+	rss - feed://atelier.inf.usi.ch/~primim/pages/cookbook_rss.xml 
+	url - http://atelier.inf.usi.ch/~primim/pages/cookbook.php
+
+
+Cookbook
+
+	This is my little cookbook of HOW-TOs, references, cheat-sheets and whatever else may come handy
+
+
+SVN
+	Set up repository
+	SERVER$ svnadmin create repositoryfolder/
+	To share the repository is necessary to give rwx to collaborators with the following acl
+	SERVER$ setfacl -R -m u:SOMEONE:rwx repositoryfolder/
+	Import the local working dir to repository
+	LOCAL$ svn import localdir/ 
+	    svn+ssh://USER@SERVER/path/to/repositoryfolder/ 
+	    -m "first ci"
+	Checkout a copy
+	LOCAL$ svn checkout 
+	    svn+ssh://USER@SERVER/path/to/repositoryfolder/ 
+	    destination/
+	Add a files to version control...
+	LOCAL$ svn add FILE ...
+	..and commit
+	LOCAL$ svn ci [PATH ...] [-m "message"]
+	Track changes of local copy
+	LOCAL$ svn [-u] status [PATH ...]
+	    -u fetches up-to-date info from remote
+	Update
+	LOCAL$ svn up
+	  A  Added
+	  D  Deleted
+	  U  Updated
+	  C  Conflict
+	  G  Merged
+	Ignore files (or set any other propertie)
+	To ignore file f.txt in directory ./somedir/
+	LOCAL$ svn propset svn:ignore *.pyc dirname
+
+	  or
+
+	LOCAL$ svn propedit svn:ignore ./somedir/
+	...Add filenames to ignore, one per line, for example f.txt
+	Warning! This applies only to files not versioned yet, modified working copies of files will be committed anyway 
+
+	Change the svn commit message:
+	svnadmin setlog REPOSITORY_PATH -r N MESSAGE_FILE 
+	    --bypass-hooks 
+	
+	
+Svn FAQ 
+
+	External definitions: you can checkout parts of an external repository or web resource into your working copy using svn:externals. Example: my_project contans subdirectories src/ and bin/, but you also need a library, mylib, which is maintained in another repository.
+	$ cd my_project
+	$ svn propedit svn:externals .
+
+	Add the line
+	"my_lib svn+ssh://USER@SERVER/path/to/library/repo"
+	From the next update, the mylib files will be checked out in my_project/my_lib.
+
+	Branching: efficiently creates another copy of a subdirectory. This can be kept in synchrony with the trunk and eventually merged back.
+	$ SVN_URL="svn+ssh://me@server.com/home/me/repo"
+	$ svn copy $SVN_URL/trunk $SVN_URL/my-branch \
+	      -m "Creating a private branch of /trunk"
+	To sync and get the updates from the trunk in the branch (branch was created at revision 123)
+	$ cd my_project/my-branch/
+	$ svn merge -r 123:HEAD  $SVN_URL/trunk
+	$ svn ci -m "Merged trunk modifications into branch"
+	To merge the branch back into the trunk
+	( Sync the branch as before, fix, test and commit )
+	$ cd my_project/trunk
+	$ svn up
+	$ svn merge -r 123:HEAD $SVN_URL/my-branch
+	$ svn ci -m "Merged  my-branch back into trunk"
+	You can now delete the branch with
+	$ cd my_project/
+	$ svn remove my_branch
+	$ svn ci -m "Removed branch my_branch"
+	
+	Read more - http://subversion.tigris.org/faq.html
+ 
+
+CVS Setup
+	Complete Step by step tutorial - http://www.cs.brandeis.edu/~guru/cvs.html
+	
+
+VNC xstartup
+	Tight-VNC is a good implementation of the vnc-server remote desktop utility.
+	Here's a basic xstartup file to place under $HOME/.vnc/xstartup
+	#!/bin/sh
+	unset SESSION_MANAGER
+	xrdb $HOME/.Xresources
+	xsetroot -solid grey
+	x-terminal-emulator -geometry 
+	    80x24+10+10 -ls -title "$VNCDESKTOP Desktop" &
+	#x-window-manager &
+	gnome-session &
+ 
+
+SSH Tunnels
+	Open a tunnel from localhost:7777 to destination.host.com:8888 passing trough SERVER
+	ssh -L 7777:destination.host.com:8888 USER@SERVER
+	(this encrypts the connection between localhost and SERVER, not from SERVER to DESTINATION)
+ 
+
+Automated (and safer) SSH login
+	That's also more secure than typing a password...
+	LOCAL$ ssh-keygen -t rsa
+		(``rsa1'' for protocol version 1 
+		 ``rsa'' or ``dsa'' for protocol version 2)
+	send the id_rsa.pub generated on SERVER to add the key:
+	SERVER$ cat id_rsa.pub >> ~/.ssh/authorized_keys 
+ 
+
+Cron daemon
+	Cron is a daemon that schedules job to run at certain time
+	In the cronjob file jobs are described one per line with the following scheme
+	 min hour day month weekday /path/to/exec --with-options
+	
+	Where:
+		Minute: 0-59
+		Hour: 0-23 (0 = midnight)
+		Day: 1-31
+		Month: 1-12
+		Weekday: 0-6 (0 = Sunday)
+	To interact with cron use crontab command
+	crontab [-u user] file		#set new from file
+	crontab -l			#prints current
+	crontab -r			#remove current
+	crontab -e			#edit current
+	Examples
+	 0 13 * * 2,4,7 /exec/something/here --log="/there.log"
+		(executes on Tue, Tur and Sat at 13.00)
+ 
+
+Sed - Stream editor
+	Sed uses regular expression to to any sort of trick and manipulation on streams
+	The simplest one is find and replace a word in a file
+	 s/pattern/replacement/[flags]
+	Where flags can be any of the following:
+	  n      -> replace nth instance of pattern
+	  g      -> replace all instances of pattern
+	  p      -> write pattern space to STDOUT
+	  w file -> write pattern space to file
+	Sed can be invoked in different ways
+	sed -e 'command1' -e 'command2' -e 'command3' file
+	cat file | sed -e 'command1' -e 'command2'
+	sed -f sedscript.sed file 
+	(trailing spaces result in script failure)
+	To pass shell variable arguments to a sed invocation is necessary to use the syntax
+	sed -e 's/'$FOO'/'$BAR'/'
+
+	Examples:
+	sed -i"back" -e 's/Marco/Mr.Primi/g' file.txt
+	Replaces all occurrences of "Marco" with "Mr.Primi", the file is updated inline, sed creates a backup with .back extension.
+	cat file |sed -e 's/\(.*\)/foo \1/g'
+	Prepends the word "foo" to all lines.
+	cat file |sed -e 's/^foo.*//g'
+	Removes lines starting with foo.
+	cat file |sed -e '/^$/d'
+	Removes all empty lines.
+	...More examples coming soon...
+	
+	Sed online manual - http://www.grymoire.com/Unix/Sed.html
+ 
+
+Find - Find files
+	A nice collection of find examples - http://dmiessler.com/study/find/
+ 
+
+gpg cheat sheet
+	The GNU Privacy Guard (GnuPG or GPG) is a free software alternative for the PGP suite of cryptographic software, released under the GNU General Public License. It is an essential tool to encrypt data or communications.
+
+	Create a key
+	gpg --gen-key
+	Export keys
+	gpg --export -a "User Name" > public.key
+	gpg --export-secret-key -a "User Name" > private.key
+	Import keys and give trust
+	gpg --import public.key
+	gpg --import private.key
+	gpg --edit "User Name"
+	>trust 
+	(select the 'trust ultimately' option)
+	>q
+	List and delete
+	gpg --delete-secret-key "User Name"
+	gpg --delete-key "User Name" #corresponding private first
+	gpg --list-keys
+	gpg --list-secret-keys
+	Encrypt
+	gpg -e [-u "Sender"] [-r "Receiver"] somefile
+	creates somefile.gpg, does not delete somefile
+	Use yourself as receiver for private data
+	Decrypt
+	gpg -d mydata.tar.gpg
+	
+	The gpg cheatsheet - http://charleslockhart.com/technical/gpg-cs.html
+ 
+
+wget - command line downloads
+	wget is a "non interactive download manager" it is extremely flexible and useful to download entire pages for offline navigation or to extract just pictures/archives/documents from a site
+	wget -c -r -l 1 --read-timeout=30 <url>
+	Useful options
+	  -A "expression*.gif"
+	  -c -> resume downloads
+	  --read-timeout=30 -> retry timeout
+
+	  -r -> recursive
+	  -l 2 -> recurse 2 levels 
+	  -p -> download all files (inlined images, sounds, ...)
+	  -nd -> do not recreate directory tree 
+	  -nH -> do not recreate host parent directory tree
+
+	  --limit-rate=100k -> limit bandwidth usage
+	  --background -> executes in background
+	  --ftp-user=... --ftp-password=...
+	  --http-user=... --http-password=... 
+	  --user-agent=... -> spoof user agent string
+
+	Download all mp3 files from a page:
+	  wget -r --no-parent -l1 --no-directories -A 
+	    ''''mp3'''' <url>
+	
+	Read more - http://www.veen.com/jeff/archives/000573.html
+
+
+Dynamic DNS with dyndns
+	Dyndns is free dynamic dns system. Useful if you want to reach a machine that has no static ip. The ddclient updates your address periodically, here's a sample configuration that determines automatically the external ip of the current network.
+	# Configuration file for ddclient
+	# /etc/ddclient.conf
+	#use=if, if=wlan0
+	syslog=yes
+	pid=/var/run/ddclient.pid
+
+	protocol=dyndns2
+	use=web 
+	server=members.dyndns.org
+	login=username
+	password='password'
+	myhostname.dynalias.net
+	Useful to verify configuration:
+	  $sudo /etc/init.d/ddclient stop
+	  $sudo ddclient -daemon=0
+	  $sudo /etc/init.d/ddclient start
+	
+	DynDNS.com - http://www.dyndns.com/
+	ddclient - http://sourceforge.net/projects/ddclient/
+ 
+
+NetCat (nc)
+	Simple tcp client and server
+	nc -l -p 1234   # Listen on 1234
+	nc localhost 1234   # Connect on 1234
+	# Add -u to both for UDP
+	This starts a remote command prompt by executing login, listening on port 1234.
+	$ nc -l -p 1234 -d -e login –L
+	    -d detach
+	    -L retry same commands on connection closed
+	    -e executes the specific command
+	Sending and receiving files
+	$ nc –l –p 1234 >newfile
+	    waits to receive a file
+	$ nc destination 1234 <origfile
+	    sends origfile to destination
+	Same commands but using pv to show transfer status
+	$ cat backup.iso | pv -b | nc -l 3333
+	$ nc 192.168.0.1 3333 | pv -b > backup.iso
+	
+	More hacks - http://www.g-loaded.eu/2006/11/06/netcat-a-couple-of-useful-examples/
+ 
+
+netstat
+	This command is very useful to monior status of network connections.
+	netstat 
+	  -a  -> show also sockets routing
+	  -p tcp  -> show only tcp connections
+	  -n   -> numbers instead of hostname and protocol name
+	  -r  -> routing table
+ 
+
+lsof
+	lsof stands for list open files, which includes block/character special files, executing text references, libraries, streams or network files (Internet socket, NFS file or UNIX domain socket.).
+	#list all open files
+	  sudo lsof | less -S 
+
+	#specify pid of a process
+	  lsof -p 1234
+
+	#sockets, turn on -n if this is slow
+	  lsof -i -P 
+
+	#which program is listening on port 1234?
+	  lsof -i :1234
+ 	
+	Read more - http://sial.org/howto/debug/unix/lsof/
+
+
+ACL - setfacl
+	Sometimes the standard rwx file attributes for owner, group and others are just not enough.
+	ACL are the easiest way to set up advanced permissions for specific users or groups.
+	$ setfacl -R -m u:SOMEONE:rwx somefolder/
+	  -R recursive
+	  -m merge (--set overwrites)
+	  u is for user, g for group
+	This grants rwx access to user SOMEONE on directory somefolder and it's content.
+	$ getfacl somefolder
+	Displays the current ACL for somefolder
+	
+	ACL - http://en.wikipedia.org/wiki/Access_control_list
+ 
+
+fstab
+	fstab reference by bodhi.zazen - http://ubuntuforums.org/showthread.php?t=283131
+ 
+
+Bash - Loops
+	#!/bin/bash
+	for i in $( ls ); do
+	  echo item: $i;
+	done
+
+	#!/bin/bash
+	for i in `seq 1 10`;
+	do
+	  echo $i;
+	done 
+
+	#!/bin/bash 
+	COUNTER=0
+	while [  $COUNTER -lt 10 ]; do
+	  echo The counter is $COUNTER
+	  let COUNTER=COUNTER+1 
+	done
+
+	#!/bin/bash
+	# Simple test for checking disk space.
+	space=`df -h | awk '{print $5}' | grep % | 
+	  grep -v Use | sort -n | tail -1 | cut -d "%" -f1 -`
+
+	case $space in
+	[1-6]*)
+	  Message="All is quiet."
+	  ;;
+	[7-8]*)
+	  Message="There's a partition that is $space % full."
+	  ;;
+	9[1-8])
+	  Message="One partition is $space % full!!!"
+	  ;;
+	99)
+	  Message="Less than 1% Left!!"
+	  ;;
+	*)
+	  Message="Nonexitent amount of disk space?!"
+	  ;;
+	esac
+	echo $Message
+	
+	Read more - http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_07_03.html
+ 
+
+Bash - Functions
+	#!/bin/bash
+
+	function say_hello ()
+	{
+	  local HELLOSTRING="Hello dear"
+	  echo "$HELLOSTRING >$1< !"
+	}
+
+	echo "what's your name?"
+	read NAME
+	say_hello $NAME
+	
+	More on functions - http://tille.garrels.be/training/bash/ch11.html
+ 
+
+Bash - Comparison Operators
+	Comparison operators with examples - http://tldp.org/LDP/abs/html/comparison-ops.html
+
+
+Testing files in a shellscript
+	  if [ -e $file ]; then
+	    ./myUtil $file
+	  fi
+	TEST	MEANING
+	[ -b $file ]	True if file exists and is block special.
+	[ -c $file ]	True if file exists and is character special.
+	[ -d $file ]	True if file exists and is a directory.
+	[ -e $file ]	True if file exists.
+	[ -f $file ]	True if file exists and is a regular file.
+	[ -g $file ]	True if file exists and is set-group-id.
+	[ -k $file ]	True if file has its ``sticky'' bit set.
+	[ -L $file ]	True if file exists and is a symbolic link.
+	[ -p $file ]	True if file exists and is a named pipe.
+	[ -r $file ]	True if file exists and is readable.
+	[ -s $file ]	True if file exists and has a size greater than zero.
+	[ -S $file ]	True if file exists and is a socket.
+	[ -t $fd  ]	True if fd is opened on a terminal.
+	[ -u $file ]	True if file exists and its set-user-id bit is set.
+	[ -w $file ]	True if file exists and is writable.
+	[ -x $file ]	True if file exists and is executable.
+	[ -O $file ]	True if file exists and is owned by the effective user id.
+	[ -G $file ]	True if file exists and is owned by the effective group id.
+	
+	Kindly stolen from http://www.troubleshooters.com/linux/quickhacks.htm
+ 
+
+Ansi colors
+	Some programs have their own parameters for adding color to output. Both ls and grep support a --color option that makes command output easier to read. ANSI escape sequences provide the underlying mechanism for this. To get a line of colored output with echo in Bash, you can add an escape sequence to the text. (...)
+	Fulltext at Linux-Magazine.com (http://www.linux-magazine.com/Issues/2007/83/PAINT-YOUR-BASH)
+	#Foreground
+	#1; attribute is bold/light depending on terminal
+	WHITE="\033[1;37m"
+	LGRAY="\033[0;37m"
+	GRAY="\033[1;30m"
+	BLACK="\033[0;30m"
+	RED="\033[0;31m"
+	LRED="\033[1;31m"
+	GREEN="\033[0;32m"
+	LGREEN="\033[1;32m"
+	BROWN="\033[0;33m"
+	YELLOW="\033[1;33m"
+	BLUE="\033[0;34m"
+	LBLUE="\033[1;34m"
+	PURPLE="\033[0;35m"
+	PINK="\033[1;35m"
+	CYAN="\033[0;36m"
+	NORM="\033[0m"
+	LCYAN="\033[1;36m"
+	#Background
+	B_BLACK="\033[40m"
+	B_RED="\033[41m"
+	B_GREEN="\033[42m"
+	B_YELLOW="\033[43m"
+	B_BLUE="\033[44m"
+	B_CYAN="\033[46m"
+	B_LGREY="\033[47m"
+
+	MILAN=${BLACK}${B_RED} #Black fg on red bg
+
+	#Attributes
+	UNDER="\033[4;32m" #GREEN underlined (4)
+	BLINK="\033[5;35m" #PURPLE blinking (5)
+	I_YELL="\033[7;33m" #ORANGE inverted bg/fg (7)
+	Preview using echo
+	echo -e "  norm ${LBLUE}BLU${NORM} norm"
+	  norm BLU norm
+	echo -e "  Forza ${MILAN}MILAN${NORM} norm"
+	  Forza MILAN norm
+	echo -e "  norm ${UNDER}underlined${NORM} norm"
+	  norm underlined norm
+	echo -e "  norm ${BLINK}blinking${NORM} norm"
+	  norm blinking norm
+	echo -e "  norm ${I_YELL}inverted${NORM} norm"
+	  norm inverted norm
+	Coloring grep
+	export GREP_COLOR="04;30;47" #Underlined, BLACK on LGRAY
+	grep --color $USER /etc/passwd
+	Coloring ls
+	dircolors -p > my_colors.txt
+	  (edit my_colors.txt, commented with instructions)
+	eval dircolors -b my_colors.txt
+
+	ls --colors
+
+	echo $LS_COLORS
+	  (export the LS_COLORS variable in ~/.bashrc to save this setting)
+	
+	Coloring the bash prompt: 
+		examples - http://maketecheasier.com/8-useful-and-interesting-bash-prompts/2009/09/04
+		reference - http://www.hypexr.org/bash_tutorial.php#cmd_prompt
+ 
+
+Sudo and sudoers
+	It is considered bad security practice to use user with administrative privileges for daily work.
+	There are different opinions on which solution is the best, I personally login with an administrator account just when needed, with:
+	me$ su - adminuser
+	  or
+	me$ ssh adminuser@localhost
+	This approach has however a major problem: graphical applications will fail to launch since no screen is attached to adminuser.
+	adminuser$ sudo wireshark
+	  (wireshark:13902): Gtk-WARNING **: cannot open display: 
+	To run wireshark you may be forced to logout and login as adminuser every time, another solution is to give this non-administrator user the permissions to run wireshark as root (not sure this is not in contradiction with the first statement :-P).
+	To do so edit the sudoers file
+	adminuser$ sudo visudo
+	    ...and add the line...
+	  %staff ALL=/sw/bin/etherape, /sw/bin/wireshark
+	This will give permissions to the users in group staff to run the two commands as root, without even asking for the password.
+	At this point open a shell as a normal user and try
+	me$ sudo -K #Clear timestamps
+	me$ sudo wireshark
+	
+	sudo and sudoers - http://polishlinux.org/first-steps/root-account/sudo-faq/
+ 
+
+Speed up Mail.app
+	"...it is possible to get quite a speed boost out of Mail.app by stripping all the bloat out of its Envelope index, an SQLite database Mail uses to store senders, recipients, subjects and so on..."
+	(close your Mail before)
+	sqlite3 ~/Library/Mail/Envelope\ Index vacuum;
+	sqlite3 ~/Library/Mail/Envelope\ Index vacuum index;
+	sqlite3 ~/Library/Mail/Envelope\ Index vacuum subjects;
+	
+	Read more - http://www.hawkwings.net/2007/03/01/a-faster-way-to-speed-up-mailapp/
+ 
+
+Remote Linux applications in X11
+	With a this neat trick is possible to forward the X display through a ssh connection directly to your Mac. What this mean? That you can run any applications on a remote server inside X11!
+	Requires no installation or configuration of any kind and often is better than going trough a remote desktop!
+	ssh -X USER@Server
+	Server$ gnome-calculator
+	It is possible to save a shortcuts or bind to a hotkey, in the Applications -> Customize Menu screen, add a new application for example:
+	ssh -X USER@Server gnome-calculator
+	If logging to server requires a password then the command is:
+	xterm -e "ssh -X USER@Server gnome-calculator"
+	
+	Screenshot - http://atelier.inf.usi.ch/~primim/img/xforw.jpg
+ 
+
+Install MySQL (with DarwinPorts)
+	Install and create the DB
+	$ port install mysql5 +server
+	$ sudo -u mysql mysql_install_db5
+	Start the server and set password for root
+	$ /opt/local/lib/mysql5/bin/mysqld_safe
+	$ /opt/local/lib/mysql5/bin/mysqladmin -u root 
+	    -h localhost password 'new-password'
+	
+	Read more - http://blog.nanorails.com/articles/2006/07/11/installing-rails-on-mac-os-x-tiger
+ 
+
+TextMate, LaTex and PDFSync
+	TextMate is an excellent environment for LaTeX too (also for basically any other language/format).
+	The default preview when compiling a pdf is presented by a TextMate plugin that has a small defect: goes back to the top of the document each time! It becomes a pain when checking changes on a multipage document.
+	The pdfsync package leaves invisible marks where the file has recently changed. Pdf-viewer programs such as TeXniScope (can't find, maybe dead RIP) and PDFView can retrieve this data and take you exactly where the file has been modified or highlight the changes.
+	Download and install one of the two programs, i.e. PDFView
+	open TextMate preferences and in "Advaced > Shell Variables" add the variable "TM_LATEX_VIEWER" with value "PDFView"
+	Don't forget to include pdfsync in the latex documents with "\usepackage{pdfsync}"
+	
+	PDFView - http://pdfview.sourceforge.net/
+
+
+My empty-latex-template snippet
+	\documentclass[11pt]{article}
+	\usepackage{geometry}
+	\geometry{a4paper} 
+	\usepackage{graphicx}
+	\usepackage{color}
+	\usepackage{pdfsync}
+
+	\title{TTIIITTLLEE}
+	\author{Marco Primi}
+	\begin{document}
+	\maketitle
+
+	  ...document here...
+
+	\end{document}
+ 
+
+YubNub + Quicksilver
+Quicksilver is a magical utility that any Mac user should have.
+It's web search plugin can be configured with YubNub (http://yubnub.org/).
+The result is the ability to reach any url or search engine with a single keystroke!
+
+Instructions - http://www.lifeclever.com/quicksilver-yubnub-rapid-web-searches-and-more/
+
+Some YubNub commands:
+
+	Wikipedia:
+	wp rick astley
+	Google images:
+	gim LOL
+	Amazon + eBay combined:
+	mash wii amazon ebay
+	Random number:
+	random 100
+	list all commands:
+	ls
+ 
+
+Applescript examples
+	The Ultimate Beginner’s Guide To AppleScript: 
+		http://mac.appstorm.net/how-to/applescript/the-ultimate-beginners-guide-to-applescript/
+
+
+Textmate bundles
+	TextMate is fully scriptable multi-language editor.
+	To check out a bundle from the repository, for example the getbundle-bundle (an interface to browse and install bundles)
+
+	BUNDLENAME=Getbundle
+	TMDIR=~/Library/Application\ Support/TextMate
+	DEST=$TMDIR/Bundles/$BUNDLENAME.tmbundle
+	REPO=http://macromates.com/svn/Bundles/trunk
+
+	mkdir -p $DEST
+	svn co $REPO/Bundles/$BUNDLENAME.tmbundle $DEST
+	Cool extensions: Code browser, ProjectPlus
+	
+	Bundles - http://svn.textmate.org/trunk/Bundles/
+	Code browser - http://www.cocoabits.com/TmCodeBrowser/
+	ProjectPlus - http://ciaranwal.sh/2008/08/05/textmate-plug-in-projectplus
+ 
+
+Disabling Mac OS X Trash
+	By default Mac does not delete files immediately, they are moved to a .Trashes hidden folder on the same volume and erased when the trash is emptied.
+	This is normally quite useful but it gets really annoying with external USB disk: if you forget to clear the trash and give the disk to someone it will look full while no file is visible.
+	To disable the trash on a given volume:
+
+	sudo rm -rf /Volumes/YOURVOLUME/.Trashes
+	sudo touch /Volumes/YOURVOLUME/.Trashes
+	By replacing the .Trashes dir with the .Trashes file, mac will from now on delete files immediately from this volume (with an additional warning).
+
+	(Command-Option-Delete will also delete any file without trashing it)
+
+ 
+Sync iCal with Google Calendar
+	CalDav allows full synchronization between Apple's iCal and Google Calendar. While the normal iCal link provided by Google is good only for downloading GCal events into iCal, this method allows to create events locally and push them on Google Calendar.
+	For more on the procedure:  
+		http://www.google.com/support/calendar/bin/answer.py?answer=99358#ical
+
+	In short:
+	Create a new account in the iCal preferences
+	Username and passwords as for Google Calendar
+	The URL is: https://www.google.com/calendar/dav/USERNAME@gmail.com/user
+	In the delegations tab, select the calendars
+ 
+
+LaTeX Accents
+	The following commands may be used only in paragraph or LR mode.
+	\`{o} produces a grave accent, ò
+	\'{o} produces an acute accent, ó
+	\"{o} produces an umlaut or dieresis, ö
+	\^{o} produces a circumflex, ô
+	\={o} produces a macron accent (a bar over the letter)
+	\b{o} produces a bar under the letter
+ 
+
+LaTex Labels
+	\begin{equation}
+	  .... 
+	 \label{eq:no1} 
+	\end{equation}
+
+	 As we see from Eq.~(\ref{eq:no1}) on page \pageref{eq:no1} ...
+ 
+
+Compress .vdi disk images (VirtualBox)
+	Virtual machines like VirtualBox and VMWare allow to attach virtual disks in VDI format to a machine. The size of the virtual disk should grow and shrink reflecting the space actually used by the guest OS.
+	In reality, dirty blocks won't magically disappear, over time the disk image will grow to it's maximum size, even if the guest is using a small part of it.
+	Effectively slimming down the image requires two steps: a "cleanup" performed by the guest and a compress performed by the host. (Make a backup of the image before starting!)
+	Linux guest:
+	Download and compile zerofree inside the VM. Then:
+	# Enter runlevel 1
+	sudo init 1
+	# Remount the disk in read-only mode
+	mount -n -o remount,ro -t ext3 /dev/sda1 /
+	# Check the disk before
+	fsck.ext3 /dev/sda1
+	# Do the magic...
+	zerofree /dev/sda1
+	# Check the disk after
+	fsck.ext3 /dev/sda1
+	# Reboot
+	shutdown -r now
+	Windows guest:
+	Get sdelete. Inside the VM run
+	sdelete -c
+
+	Finally you can compress the disk (the VM should not be running), with VirtualBox, this is done with:
+	VboxManage modifyvdi /absolute/path/to/VM.vdi compact
+	
+	zerofree - http://intgat.tigress.co.uk/rmy/uml/index.html
+ 	sdelete -http://technet.microsoft.com/en-us/sysinternals/bb897443.aspx
+
+Advanced Google query operators
+	Some useful additional query operators for Google
+	Displays cached page for www.url.com with foo highlighted 
+	cache:www.url.com foo
+
+	Search pages linking to www.url.com
+	link:www.url.com
+
+	Search pages similar to www.url.com
+	related:www.url.com
+
+	Show some informations on www.url.com
+	info:www.url.com
+
+	Search for a definition of "abelian group"
+	define:abelian group
+	Additional query modifiers (can be added to a normal query)
+	search foobar restricted in the given domain
+	foobar site:www.url.com
+	foobar site:com
+
+	Self explanatory
+	allintitle:foo
+	intitle:foo
+	allinurl:foo
+	
+	Google operators - http://www.google.com/support/websearch/bin/answer.py?hl=en&answer=136861
+	Also google calculator - http://www.google.com/help/features.html#calculator
+
+ 
+GNU Make, a simple makefile
+	This is just a simple Makefile template
+	# Simple Sample Makefile
+	# Marco Primi
+	# Università della Svizzera Italiana
+
+	CFLAGS = -Wall -g
+
+	# Object files list
+	obj = MyLLOC.o
+
+	# Main executable
+	mylloc : $(obj)
+		cc $(CFLAGS) -o mylloc $(obj)
+
+	# Objects
+	MyLLOC.o : MyLLOC.c MyLLOC.h
+		cc $(CFLAGS) -c MyLLOC.c
+
+
+	#Other rules
+	.PHONY : clean
+	clean :
+		rm -f mylloc $(obj)
+		
+	GNU Make Manual - http://www.gnu.org/software/make/manual/make.html
+ 
+
+Compiling and linking C libraries
+	If you have a bunch of files that contain just functions, you can turn these source files into a library, providing better program modularity, and code re-use. Write Once, Use Many.
+	This archive contains makefile that builds both the static and dynamic version of an example library. Then creates two executable using the two methods.
+	Works on Mac OS X and Linux.
+	libfoo.zip - http://atelier.inf.usi.ch/~primim/filez/libfoo.zip
+
+	Read more on static and dynamic library creation - http://randu.org/tutorials/
+ 
+
+C Sockets Reference
+	Beej awesome guide of C network programming: 
+		http://beej.us/guide/bgnet/
+ 
+
+Merging different pdf files 
+	Neat trick from macosxhints.com to merge different pdf files into a single with a simple command, uses ghostscript.
+	gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite \
+	    -sOutputFile=merged.pdf source1.pdf source2.pdf
+	
+	Taken from - http://www.macosxhints.com/article.php?story=2003083122212228
+ 
+
+Firefox tweaks and useful extensions
+	FoxyProxy - Proxy with embedded TOR client
+	Firebug - Super web page debugger
+	Xmarks - Synchronize bookmarks across multiple Firefox
+	NoScript - Block selectively scripts
+	Stealther - Surf leaving no trace on the local machine
+	View Cookies - view cookies...
+	TamperData - Manipulate headers sent by the browser
+	DownloadThemAll! - Advanced download manager
+	The following settings can be changed by entering about:config in the url 
+
+	Speed up page download with multiple concurrent requests:
+	  network.dns.disableIPv6 -> true  
+	  network.http.pipelining -> true
+	  network.http.proxy.pipelining -> true
+	  network.http.pipelining.maxrequests -> 4 (or 8)
+	Always resume last firefox session, default is 1 - ask to resume on crash
+	browser.startup.page -> 3
+	By default FF downloads the next page he thinks you will click, ex. first google results, to turn this off:
+	network.prefetch-next -> false
+	Disable useless tooltips for the toolbars
+	browser.chrome.toolbar_tips -> false
+	turn on spellchecker: (default=1, off)
+	layout.spellcheckDefault -> 2
+	Open bookmarks in new tabs
+	browser.tabs.loadFolderAndReplace -> false
+	Close buttons on tabs:
+	1: one button per tab, 2: no buttons at all, 3: just one on the right
+	browser.tabs.closeButtons -> 2
+	Enable RAM cache for rendered pages:
+	8192 is good for 512 MB, not recomended for slow machines
+	browser.cache.memory.enable -> true
+	  (new integer key) browser.cache.memory.capacity -> 8192
+
+	Avoid a sound alert if no match is found when you search for text
+	accessibility.typeaheadfind.enablesound -> false
+	Reduce number of closed tabs you can undo
+	browser.sessionstore.max_tabs_undo -> 3
+	Reduce maximum number of results in Awesome Bar
+	browser.urlbar.maxRichResults -> 5
+	Reduce maximum number of simultaneous popups
+	dom.popup_maximum -> 5
+ 
+
+rTorrent configuration
+	rTorrent is an awesome, terminal-based Bittorent client. It's almost invisible in terms of resources used and it's highly customizable. Here is my current configuration file (~/.rtorrent.rc)
+	The following script is a wrapper that uses screen to start rTorrent. If it's already running, it will attach in shared screen mode (ideal for monitoring downloads on some server through SSH).
+
+	#!/bin/bash
+	sessionname="torz";
+	procname="rtorrent";
+
+	# Try to attach to a previous session
+	screen -x -S $sessionname;
+	if [[ "$?" == "0" ]]; then
+		#Session found, blocks until detatch/quit
+		echo "Leaving resumed session"
+	else
+		#No session, start it
+		echo "Session not found, press enter to start it"
+		read
+		screen -S $sessionname $procname
+	fi
+
+	# Check if process is still running on exit
+	if [[ `ps | grep $procname | grep -v grep` ]]; then
+	        echo "Is $procname running?  YES"
+	else
+	        echo "Is $procname running?  NO"
+	fi
+ 
+
+Writing a meaningful abstract
+	[...]The abstract is your four sentence summary of the conclusions of your paper. Its primary purpose is to get your paper into the A pile. Most PC members sort their papers in an A pile and a B pile by reading the abstracts. The A pile papers get smiling interest, the B pile papers are a chore to be slogged through. By keeping your abstract short and clear, you greatly enhance your chances of being in the A pile. 
+	I try to have four sentences in my abstract. The first states the problem. The second states why the problem is a problem. The third is my startling sentence. The fourth states the implication of my startling sentence. An abstract for this paper done in this style would be:
+	The rejection rate for OOPSLA papers in near 90%. Most
+	papers are rejected not because of a lack of good ideas,
+	but because they are poorly structured. Following four
+	simple steps in writing a paper will dramatically
+	increase your chances of acceptance. If everyone
+	followed these steps, the amount of communication in the
+	object community would increase, improving the rate of
+	progress.
+	Kent Beck
+
+
+Copyright (c) 2009 Marco Primi. All rights reserved.
