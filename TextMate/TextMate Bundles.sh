@@ -1,10 +1,15 @@
 # TextMate Bundles 
 
-# To install bundels:
+# To install git bundels:
 mkdir -p ~/Library/Application\ Support/TextMate/Bundles
 cd ~/Library/Application\ Support/TextMate/Bundles
 git clone git://github.com/user_name/somebundle_tmbundle.git "Some\ Bundle.tmbundle"
 osascript -e 'tell app "TextMate" to reload bundles'
+
+# To install svn bundels:
+mkdir -p /Library/Application\ Support/TextMate/Bundles
+cd /Library/Application\ Support/TextMate/Bundles
+svn co http://svn.textmate.org/trunk/Bundles/Haskell.tmbundle
 
 # Bundles
 
