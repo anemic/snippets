@@ -24,7 +24,7 @@ set uifont {Monaco 10}
 # the first line uses TextMate as the message editor insead of vi the default which I wish I knew but sadly do not :(
 # reset sets up aliases for less typing in the command line :)
 # put in ~/.profile or ~/.bash_login, what ever you use to set your env vars on login
-export GIT_EDITOR="mate -w"   
+export GIT_EDITOR="mate -wl1"  
 alias gst='git status'
 alias gl='git pull'
 alias gp='git push'
