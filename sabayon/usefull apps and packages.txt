@@ -1,0 +1,32 @@
+naim
+	http://naim.n.ml.org/about
+	Instant Messaging 
+	terminal based AOL client, it can also do Lily and IRC.
+
+amarok
+	http://amarok.kde.org/
+	music player that handles MP3 players without problem
+
+portato
+	http://portato.origo.ethz.ch/
+	GUI for emerge
+	
+himerge 
+	has a very high degree of difficulty for installation. I have no experience with this program, but hear nothing but complaints on how hard it is to install.
+
+codeine
+	http://www.methylblue.com/filelight/
+	A simple video-player for KDE with a focus on ergonomics and usability.
+	
+eix
+	http://eix.sourceforge.net/
+	http://en.gentoo-wiki.com/wiki/Eix
+	A great tool for viewing meta data for packages.  Can see use flags, overlays, etc. for packages in emerge or equo 
+
+beagle
+	http://beagle-project.org/Main_Page
+	a search tool that ransacks your personal information space to find whatever you're looking for
+	Quite the little gem, similar to LaunchBar and QuickSilver for Mac OS X
+	
+firefox-bin
+	the tried and true, the one, the only, you get the idea, it is no safari but it works ;)

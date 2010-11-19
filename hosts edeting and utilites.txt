@@ -1,0 +1,12 @@
+~ $ sudo dscacheutil -flushcache
+~ $ host facebook.com
+facebook.com has address 69.63.176.140
+facebook.com has address 69.63.184.142
+facebook.com mail is handled by 10 mx.sf2p.tfbnw.net.
+facebook.com mail is handled by 10 mx.snc1.tfbnw.net.
+
+
+
+$ dscacheutil -q host -a name facebook.com
+name: facebook.com
+ip_address: 127.0.0.1
