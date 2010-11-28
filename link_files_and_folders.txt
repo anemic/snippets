@@ -1,0 +1,2 @@
+# creates a symbolic link
+ln -s /Volumes/Classic/ Classic
