@@ -8,6 +8,8 @@ git config --global color.branch auto
 git config --global merge.tool opendiff
 git config --global apply.whitespace nowarn
 
+git config --global core.editor "mate -w"
+
 # aliases checkout with co
 # example: git co master
 git config --global alias.co checkout

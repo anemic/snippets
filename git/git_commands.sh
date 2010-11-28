@@ -10,6 +10,9 @@ git branch --track branch_name origin/branch_name
 git branch branch_name
 git checkout branch_name
 
+# to work with files on remote branch checkout remote branch into local branch
+$ git checkout -b experimental origin/experimental
+
 # remove unmerged branch
 git branch -D branch_name
 

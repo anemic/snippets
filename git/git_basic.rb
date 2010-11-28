@@ -13,6 +13,9 @@ git checkout <branch_name>
 # remove unmerged branch
 git branch -D <branch_name> 
 
+# to work with files on remote branch checkout remote branch into local branch
+$ git checkout -b <branch_name> <origin/branch_name>
+
 # changes to the master are updated in the branch 
 git rebase master 
 
