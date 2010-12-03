@@ -10,3 +10,7 @@
 
 # postgres
 sudo env ARCHFLAGS="-arch i386" gem install postgres -- --with-pgsql-dir=/Library/PostgreSQL/8.4/
+
+
+
+sudo env ARCHFLAGS="-arch i386" gem install mysql -v 2.7 -- --with-mysql-config=/usr/local/mysql/bin/mysql_config
