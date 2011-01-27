@@ -13,7 +13,7 @@ $ cd myproject
 
 $ git branch
 * master
-# But there are other branches hiding in your repository! You can see these using the -a flag:
+# use the -a flag to see all branches, such as remote branches 
 
 $ git branch -a
 * master
