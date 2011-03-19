@@ -2,7 +2,9 @@
 # 	Home:
 # 		http://rvm.beginrescueend.com/
 
+
 # Quick Install:
+
 $ bash < <( curl http://rvm.beginrescueend.com/releases/rvm-install-head )
 
 # Place the folowing line at the end of your shell's loading files
@@ -13,9 +15,10 @@ $ bash < <( curl http://rvm.beginrescueend.com/releases/rvm-install-head )
 
 # open a new term session to load profile
 # test install by running
-$ type rvm | head -1
-# should return 
-rvm is a function
+$ type rvm | head -1 # should return "rvm is a function"
+
+
+# Some basic usage
 
 # install ruby 1.8.7 into rvm
 $ rvm install 1.8.7 # installs patch 302: closest supported version
