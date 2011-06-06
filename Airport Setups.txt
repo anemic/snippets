@@ -1,0 +1,34 @@
+Here are the basic steps to configuring for a static WDS with the newer 802.11n AirPorts:
+
+	AEBSn - WDS Setup:
+	(Note: To facilitate the WDS set up, temporarily connect the remote (& relay) base station(s) to the AEBSn by Ethernet during the set up phase, and then, relocate it to the desired location when complete. Also, jot down the AirPort IDs (MAC addresses) for each of the base stations to be used in the WDS. The AirPort ID and is printed on the label on the bottom/side of the base station.)
+
+	Main Base Station Setup - AEBSn:
+		Click the AirPort status menu in the menu bar and choose the wireless network created by the base station you want to set up as the main base station.
+		Open AirPort Utility (located in the Utilities folder in the Applications folder on a Macintosh computer, or in Start > All Programs > AirPort on a computer using Windows). 
+		Select the main base station, and then, choose Manual Setup from the Base 
+		tation menu.
+		Enter the base station password if necessary. If the base station is using the default password of public, you will not be prompted for a password.
+		Click Wireless in the toolbar, and then, choose “Participate in a WDS network” from the Wireless Mode pop-up menu. Note: You will need to hold down the Option key in order to get this option on the AEBSn, 802.11n AirPort Express Base Station (AXn), or Time Capsule (TC). 
+		Click WDS and then, choose “WDS main” from the WDS Mode pop-up menu. 
+		Select the “Allow wireless clients” checkbox if you want client computer to connect to this base station. 
+		Click the Add "+" button and enter the AirPort ID of the base station you want to connect to this base station.
+		Click Update to send the new settings to the base stations in the WDS. 
+
+	Remote Base Station Setup - AX#2:
+		Open AirPort Utility; select the remote base station, and then, choose Manual Setup from the Base Station menu.
+		Enter the base station password, if necessary. 
+		Enter the same network password as the main base station, if necessary. 
+		Click AirPort in the toolbar, and then, click Wireless. Choose “Participate in a WDS network” from the Wireless Mode pop-up menu, and then, choose the same channel as the main base station from the Channel pop-up menu. 
+		Click WDS and choose “WDS remote” 0from the pop-up menu.
+		Enter the AirPort ID of the main base station in the WDS Main field.
+		Click Update to transfer the settings to the base station. 
+
+	Relay Base Station Setup - AX#1:
+		Open AirPort Utility; select the relay base station, and then, choose Manual Setup from the Base Station menu.
+		Enter the same network password as the main base station, if necessary. 
+		Click AirPort in the toolbar, and then, click Wireless. Choose “Participate in a WDS network” from the Wireless Mode pop-up menu, and then, choose the same channel as the main base station from the Channel pop-up menu. 
+		Click WDS and choose “WDS relay” from the WDS Mode pop-up menu. 
+		Enter the AirPort ID of the main base station in the Main AirPort ID field.
+		Click the Add "+" button and enter the AirPort ID of the remote base station this relay base station will connect to.
+		Click Update to transfer the new WDS settings to the relay and remote base stations.
