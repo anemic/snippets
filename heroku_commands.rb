@@ -33,6 +33,61 @@ heroku-postgresql pg:promote --db <DATABASE>
 
 
 
+/********************************************************* backups *********************************************************/
+# pgbackups
+
+# The Heroku PGBackups add-on lets you easily capture and manage backups for your shared and dedicated Heroku PostgreSQL databases.
+# install add-on pgbackups for backing up, exporting, and importing PostgreSQL
+heroku addons:add pgbackups
+
+# capture a backup of your primary database
+heroku pgbackups:capture
+
+# specify HEROKU_POSTGRESQL_URL for multiple databases
+heroku pgbackups:capture HEROKU_POSTGRESQL_URL
+
+# automatically delete your oldest backup when capturing a new one
+heroku pgbackups:capture --expire
+
+# summary list of all your backups
+heroku pgbackups
+
+# for migrating or exporting your database
+# create a publicly accessible URL for backups, which is available for 10 minutes
+heroku pgbackups:url b004
+
+# delete a backup
+heroku pgbackups:destroy b003
+
+# restore a backup into a database 
+heroku pgbackups:restore b007
+
+# if you have an existing PostgreSQL database you’d like to export from elsewhere use pg_dump tool to dump it in compressed format
+PGPASSWORD=mypassword pg_dump -Fc --no-acl --no-owner -h myhost -U myuser mydb > mydb.dump
+
+# upload it somewhere with an HTTP accessible URL
+# Amazon S3 and S3Fox (http://www.s3fox.net/) are recommend 
+# create the file with private access and create a temporary authorized URL for the Heroku import then cut and paste that URL into your restore command
+heroku pgbackups:restore 'http://s3.amazonaws.com/.....mydb.dump?authparameters'
+
+# if you’d like to move your database out of the Heroku PostgreSQL service, 
+# take a backup and then download it using a variety of tools such as curl, wget, or a web browse 
+# for example (backup URLs will expire 10 minutes after they are issued)
+curl -o latest.dump `heroku pgbackups:url`
+
+# you can then load this dump into your local database using the pg_restore tool, 
+# just as Heroku does when you initiate a restore
+pg_restore --verbose --clean --no-acl --no-owner -h myhost -U myuser -d mydb latest.dump
+
+# you can use pgbackups to transfer data from one app to another, 
+# say from your production app to your staging app
+# to do this, capture a backup on the primary app, then import that backup into the secondary app
+heroku pgbackups:capture --app myapp
+heroku pgbackups:restore `heroku pgbackups:url --app myapp` --app myapp-staging
+
+
+
+
 /********************************************************* logging *********************************************************/
 # fetch recent log output for debugging
 heroku logs
