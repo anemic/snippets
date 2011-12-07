@@ -1,3 +1,6 @@
+# add github source
+gem sources -a http://gems.github.com/
+
 # Some basic git commands to git around ;)
 
 # push branch to origin, creates branch on origin if does not exist 

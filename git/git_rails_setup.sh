@@ -1,3 +1,6 @@
+# add github source
+gem sources -a http://gems.github.com/
+
 # this is a quick start for setting up a git repo in a rails project and working with a remote and local branch
 
 # initialize the repo

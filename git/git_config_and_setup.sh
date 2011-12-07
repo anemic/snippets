@@ -1,3 +1,6 @@
+# add github source
+gem sources -a http://gems.github.com/
+
 # Git system setup
 
 git config --global user.name "Name"

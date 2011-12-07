@@ -15,6 +15,9 @@ config.gem "hpricot" # add to enviornment.rb
 rake gems:unpack GEM=hpricot 
 rake gems:build
 
+# new syntax to install specific version of a gem
+gem install rails -v 3.1.0
+
 # install specific version of a gem
 gem install --include-dependencies -v=2.1.0 rails
 
