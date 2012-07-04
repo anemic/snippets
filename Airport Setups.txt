@@ -33,5 +33,4 @@ Here are the basic steps to configuring for a static WDS with the newer 802.11n 
 		Click the Add "+" button and enter the AirPort ID of the remote base station this relay base station will connect to.
 		Click Update to transfer the new WDS settings to the relay and remote base stations.
 
-# 		minor edit
 		
