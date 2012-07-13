@@ -14,3 +14,9 @@ sudo env ARCHFLAGS="-arch i386" gem install postgres -- --with-pgsql-dir=/Librar
 
 
 sudo env ARCHFLAGS="-arch i386" gem install mysql -v 2.7 -- --with-mysql-config=/usr/local/mysql/bin/mysql_config
+
+
+# get around Library not loaded: libmysqlclient.18.dylib
+sudo ln -s /usr/local/mysql/lib/libmysqlclient.18.dylib /usr/lib/libmysqlclient.18.dylib
+
+gem install mysql2 -- --with-mysql-dir=/usr/local/mysql
