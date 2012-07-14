@@ -1,3 +1,4 @@
+# Homebrew URLs
 URLs:
   Home:
     http://mxcl.github.com/homebrew/
@@ -11,8 +12,17 @@ URLs:
     https://github.com/mxcl/homebrew.git
 
 
+# HomeBrew Caches
+pwd:
+  /Library/Caches/Homebrew/
+  
+# Hard reset on HomeBrew's git repo
+# HomeBrew tracks of all versions with a git repo, it is how it installs and versions all installed apps and formulas
+$ cd /usr/local
+$ git reset --hard FETCH_HEAD
 
 
+# Install log
 Install log:
   gummo:~ anemic$ ruby -e "$(curl -fsSLk https://gist.github.com/raw/323731/install_homebrew.rb)"
   ==> This script will install:
@@ -54,4 +64,6 @@ Install log:
   ==> /usr/bin/sudo /usr/bin/chgrp staff /usr/local/. /usr/local/bin /usr/local/etc /usr/local/include /usr/local/lib /usr/local/lib/pkgconfig /usr/local/sbin /usr/local/share /usr/local/share/locale /usr/local/share/man /usr/local/share/man/man1 /usr/local/share/info /usr/local/share/doc
   ==> Downloading and Installing Homebrew...
   ==> Installation successful!
+  
+  
   
