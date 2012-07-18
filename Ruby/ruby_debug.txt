@@ -1,0 +1,6 @@
+
+# for Ruby 1.9.x use ruby-debug19
+gem install ruby-debug19
+
+# to build for your patchlevel or custom Ruby 1.9.x build define the path, the path should point to dir holding the file: vm_core.h 
+gem install ruby-debug19 -- --with-ruby-include=$rvm_path/src/ruby-1.9.2-head/
