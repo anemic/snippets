@@ -1,0 +1,62 @@
+# quick and easy
+Use mysqldump to backup your databases to text files!
+Stop the database server
+sudo rm /usr/local/mysql
+sudo rm -rf /usr/local/mysql*
+sudo rm -rf /Library/StartupItems/MySQLCOM
+sudo rm -rf /Library/PreferencePanes/My*
+edit /etc/hostconfig and remove the line MYSQLCOM=-YES-
+rm -rf ~/Library/PreferencePanes/My*
+sudo rm -rf /Library/Receipts/mysql*
+sudo rm -rf /Library/Receipts/MySQL*
+sudo rm -rf /private/var/db/receipts/*mysql*
+
+
+# to see explanations and a walkthrough of all the above commands, see all info bellow
+
+# in some cases /usr/local/mysql will be a symbolic link
+ls -l /usr/local/mysql
+
+# if the output of ls -l /usr/local/mysql shows that it points to another folder
+# first remove the linked folder then the symbolic link
+sudo rm -rf /usr/local/mysql* # where mysql* matches your installed directory
+sudo rm /usr/local/mysql
+
+# if /usr/local/mysql is not linked just remove the directory
+sudo rm -rf /usr/local/mysql
+
+# remove mysql main dir
+sudo rm -rf /usr/local/mysql
+
+# remove Preference Panel from System Prefrences if installed globaly
+sudo rm -rf /Library/PreferencePanes/MySQL.prefPane
+
+# remove Preference Panel from your user account if not installed globaly
+rm -rf ~/Library/PreferencePanes/MySQL.prefPane
+
+# remove startup script
+sudo rm -rf /Library/StartupItems/MySQLCOM
+
+# these next three lines are particularly important as otherwise, you can't install an older version of MySQL 
+# even though you think that you've completely deleted the newer version you must remove all receipts
+sudo rm -rf /Library/Receipts/mysql*
+sudo rm -rf /Library/Receipts/MySQL*
+sudo rm -rf /private/var/db/receipts/*mysql*
+
+# edit /etc/hostconfig and remove the line MYSQLCOM=-YES-
+AFPSERVER=-NO-
+AUTHSERVER=-NO-
+TIMESYNC=-NO-
+QTSSERVER=-NO-
+MYSQLCOM=-YES- # change to NO
+
+# edited /etc/hostconfig
+AFPSERVER=-NO-
+AUTHSERVER=-NO-
+TIMESYNC=-NO-
+QTSSERVER=-NO-
+MYSQLCOM=-NO-
+
+
+
+
