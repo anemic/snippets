@@ -18,6 +18,7 @@ vendor/plugins/query_analyzer* # just an example
 
 
 
+
 # Local examples with explanations 
 
 # first and formost ignore all thoes pesky .DS_Store files that mac os x loves to generate in each dir
