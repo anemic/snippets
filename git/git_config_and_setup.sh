@@ -1,6 +1,13 @@
 # add github source
 gem sources -a http://gems.github.com/
 
+# add support for bash completion and command prompt branch display
+source ~/.git-completion.bash
+source ~/.git-prompt.sh
+
+# show git branch in your command prompt
+PS1='\u \W$(__git_ps1 " (%s)")\$ '
+
 # Git system setup
 
 git config --global user.name "Name"
