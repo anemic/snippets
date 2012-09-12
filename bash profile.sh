@@ -16,7 +16,7 @@ export PATH="/my/local/node/bin:$PATH"
 export PATH="$HOME/.ec2/ec2-api-tools-1.6.1.3/bin:$PATH"
 
 # set Java Home var
-# JAVA_HOME for 10.8
+# JAVA_HOME for 10.8 (Mountain Lion)
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/1.6.0_32-b05-420.jdk/Contents/Home"
 
 # set NODE_PATH
