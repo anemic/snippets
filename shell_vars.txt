@@ -1,4 +1,8 @@
 
+# set shell (useful if you want to switch from zsh to bash or vis versa)
+chsh -s /bin/bash
+# or
+chsh -s /bin/zsh
 
 # set Java Home var
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/1.6.0_32-b05-420.jdk/Contents/Home"

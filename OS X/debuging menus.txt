@@ -1,0 +1,10 @@
+
+# enable app store debuging
+defaults write com.apple.appstore ShowDebugMenu -bool true
+
+# enable safari debuging menu
+defaults write com.apple.Safari IncludeInternalDebugMenu 1
+
+# disable safari debuging menu
+defaults write com.apple.Safari IncludeInternalDebugMenu 0
+
