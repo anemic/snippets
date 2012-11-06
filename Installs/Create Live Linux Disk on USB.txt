@@ -1,0 +1,13 @@
+This is how to install BT to USB but will also work for other distros.
+
+BackTrack Live USB Install
+
+This method of getting a live install to a USB drive is the simplest available using Unetbootin. 
+Note that we will format the USB drive and erase its contents.
+
+Plug in your USB Drive (Minimum USB Drive capacity 2 GB)
+Format the USB drive to FAT32
+Download Unetbootin from http://unetbootin.sourceforge.net/ 
+Start Unetbootin and select diskimage (use the backtrack-final ISO)
+Select your USB drive and click “OK” for creating a bootable BackTrack USB drive
+Log into BackTrack with the default username and password root / toor.
