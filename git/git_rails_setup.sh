@@ -1,3 +1,5 @@
+*********************** Git Rails Setup ***********************
+
 # add github source
 gem sources -a http://gems.github.com/
 

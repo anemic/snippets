@@ -1,3 +1,5 @@
+*********************** Git Config ***********************
+
 # add github source
 gem sources -a http://gems.github.com/
 

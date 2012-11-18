@@ -1,3 +1,5 @@
+*********************** Git Basics ***********************
+
 # add github source
 gem sources -a http://gems.github.com/
 

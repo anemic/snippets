@@ -1,3 +1,5 @@
+*********************** Git Basics *********************** 
+
 # New Repo
 # create local git repo
 $ mkdir gitapp

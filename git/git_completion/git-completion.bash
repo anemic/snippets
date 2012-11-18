@@ -1,3 +1,5 @@
+*********************** Git Completion ***********************
+
 #!bash
 #
 # bash completion support for core Git.

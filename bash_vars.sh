@@ -1,4 +1,4 @@
-
+*********************** Bash Variables *********************** 
 
 # set Java Home in 10.8 (Mountain Lion)
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/1.6.0_32-b05-420.jdk/Contents/Home"
